@@ -2,7 +2,7 @@
   "name": "inventory-system-supplies",
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js",
+    "start": "ng serve",
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
