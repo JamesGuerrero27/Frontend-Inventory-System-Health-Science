@@ -93,3 +93,19 @@ mat-nav-list {
   background: $bg-color-blue;
   color: $bg-color-text-white;
 }
+
+
+mat-sidenav-content {
+  mat-toolbar.s-toolbar {
+    div {
+      padding-left: 30%;
+      div {
+        display: flex;
+        justify-content: space-around;
+        mat-icon {
+        font-size: 3rem;
+        }
+      }
+    }
+  }
+}
