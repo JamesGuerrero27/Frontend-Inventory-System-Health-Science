@@ -1,0 +1,95 @@
+// Declaracion de variables
+// COLORES
+$bg-color-blue: #00CBFE;
+$bg-color-dark: #2D323E;
+$bg-color-semi-dark: #1E212A;
+$bg-color-text-grey: #D4DAE0;
+$bg-color-text-white: #fff;
+
+// FUENTES
+$font-first : 'Nunito Sans', sans-serif;
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 20.5%;
+  background-color: $bg-color-dark;
+  color: $bg-color-text-grey;
+}
+
+mat-nav-list {
+  margin-top: 10%;
+  div, a{
+    color: $bg-color-text-grey;
+    margin: 5% 4% 0;
+
+    mat-icon {
+      margin-right: 5%;
+    }
+  }
+}
+
+.sidenav .mat-toolbar {
+  padding: 0;
+  background: $bg-color-semi-dark;
+  height: 33%;
+  color: $bg-color-text-grey;
+  div.container-toolbar {
+    position: absolute;
+    top: 3.5%;
+    div.container-all{
+      margin-left: 8%; 
+      div.container-logo{
+        text-transform: uppercase;
+        font-size: 1rem;
+        margin-bottom: 2%;
+        img{
+          width: 10%;
+          margin-right: 2%;
+        }
+      }
+      div.icon-sede{
+        font-size: .8rem;
+        letter-spacing: .1rem;
+        display: flex;
+        mat-icon{
+          margin-right: 2%;
+        }
+      }
+    }
+    div.container-user{
+      text-align: center;
+      margin-top: 15%;
+      h1.title-user{
+        font-size: 1.8rem;
+        text-align: center;
+        letter-spacing: .2rem;
+        font-family: $font-first;
+        font-weight: 400;
+      }
+      h1.email-user{
+        font-size: 1rem;
+        font-family: $font-first;
+        font-weight: 200;
+        letter-spacing: .1rem;
+      }
+    }
+  }
+}
+
+.s-logoUser_nav{
+  right: 40%;
+  top: 26%;
+  position: absolute;
+}
+
+.s-toolbar{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 2.5% 1%;
+  background: $bg-color-blue;
+  color: $bg-color-text-white;
+}

@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+
+      <mat-toolbar>
+        <div class="container-toolbar"> 
+          <div class="container-all">
+            <div class="container-logo">
+              <img src="../../../assets/img/logoNegativo.png" alt="Logo">Enfermeria Auxiliar</div>
+            <div class="icon-sede"><mat-icon >account_balance</mat-icon> Ceutec Norte | San Pedro Sula  </div>
+          </div>
+          <div class="container-user">
+            <h1 class="title-user">Jesus Sarmiento</h1>
+            <h1 class="email-user">jesus.sarmiento@gmail.com</h1>
+          </div>
+        </div> 
+           <div>
+             <img src="https://openclipart.org/download/247320/abstract-user-flat-4.svg" alt="User" class="w-25 s-logoUser_nav" >
+           </div>
+      </mat-toolbar>
+
+    <mat-nav-list>
+        <div>
+            <a class="text-muted ml-3 h6">MIS APLICACIONES</a>
+        </div>
+        <a mat-list-item href="#">
+          <mat-icon >account_balance</mat-icon>DashBoard</a>
+        <a mat-list-item href="#">
+          <mat-icon >account_balance</mat-icon>Requisicion</a>
+        <a mat-list-item href="#">
+          <mat-icon >account_balance</mat-icon>Productos</a>
+        <a mat-list-item href="#">
+          <mat-icon >account_balance</mat-icon>Bodega</a>
+        <a mat-list-item href="#">
+          <mat-icon >account_balance</mat-icon>Inventario</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <mat-toolbar class="s-toolbar">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span  class="w-50">
+        <mat-form-field appearance="legacy" class="w-100">
+          <mat-label>Search</mat-label>
+          <input matInput>
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <!-- <div class="card"><i class="fas fa-building"></i>hello</div> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
