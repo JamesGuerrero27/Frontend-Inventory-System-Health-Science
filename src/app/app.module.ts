@@ -11,12 +11,14 @@ import { LayoutModule } from '@angular/cdk/layout';
 // IMPORT PARA ANGULAR MATERIAL
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { LoadingComponent } from './@theme/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NavComponent
+    NavComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
