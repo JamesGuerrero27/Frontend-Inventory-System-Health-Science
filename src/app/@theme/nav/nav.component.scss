@@ -9,8 +9,12 @@ $bg-color-text-white: #fff;
 // FUENTES
 $font-first : 'Nunito Sans', sans-serif;
 
+// HIDDEN
+$hidden : hidden;
+
 .sidenav-container {
   height: 100%;
+  overflow: $hidden;
 }
 
 .sidenav {
@@ -94,7 +98,9 @@ mat-nav-list {
   color: $bg-color-text-white;
 }
 
-
+mat-sidenav{
+  overflow: $hidden;
+}
 mat-sidenav-content {
   mat-toolbar.s-toolbar {
     div {
