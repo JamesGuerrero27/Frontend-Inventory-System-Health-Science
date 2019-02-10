@@ -27,13 +27,23 @@ mat-nav-list {
   margin-top: 10%;
   div, a{
     color: $bg-color-text-grey;
-    margin: 5% 4% 0;
-
+    margin: 5% 0 0;
+    &:hover {
+      background-color: $bg-color-text-white;
+      transition: 1s;
+      color: $bg-color-semi-dark
+    } 
     mat-icon {
-      margin-right: 5%;
+      margin: 0 5%;
     }
   }
+  
 }
+
+
+
+
+
 
 .sidenav .mat-toolbar {
   padding: 0;
