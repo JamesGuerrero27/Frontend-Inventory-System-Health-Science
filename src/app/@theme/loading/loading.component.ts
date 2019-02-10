@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LoadingComponent implements OnInit {
-  color = 'primary';
+  color = 'white';
   mode = 'indeterminate';
   value = 50;
   constructor() { }

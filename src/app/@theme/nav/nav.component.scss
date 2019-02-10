@@ -1,89 +1,115 @@
-// Declaracion de variables
-// COLORES
+// DECLARACION DE VARIABLES
+
+// VARIABLES DE COLORES
 $bg-color-blue: #00CBFE;
+$bg-color-semi-blue: #1A8ECB;
 $bg-color-dark: #2D323E;
 $bg-color-semi-dark: #1E212A;
 $bg-color-text-grey: #D4DAE0;
 $bg-color-text-white: #fff;
 
-// FUENTES
-$font-first : 'Nunito Sans', sans-serif;
+// VARIABLE FUENTES
+$font-first : 'Nunito Sans',
+sans-serif;
 
-// HIDDEN
+// VARIABLE HIDDEN
 $hidden : hidden;
 
+// SIDENAV
 .sidenav-container {
   height: 100%;
   overflow: $hidden;
 }
 
+// SIDENAV GENERAL
 .sidenav {
   width: 20.5%;
   background-color: $bg-color-dark;
   color: $bg-color-text-grey;
 }
 
+// ESTILO DE LISTA DE ITEMS DEL MENU
 mat-nav-list {
   margin-top: 10%;
-  div, a{
-    color: $bg-color-text-grey;
-    margin: 5% 0 0;
-    &:hover {
-      background-color: $bg-color-text-white;
-      transition: 1s;
-      color: $bg-color-semi-dark
-    } 
-    mat-icon {
-      margin: 0 5%;
+
+  div.title-list-item{
+    margin-top: 15%;
+    height: 40px;
+
+    a {
+      margin-left: 8%;
+      font-size: 1.2em;
+      font-weight: 500;
     }
   }
-  
+  div.container-item {
+    a {
+      color: $bg-color-text-grey;
+      // margin: 5% 0 0;
+      height: 60px;
+      &:hover {
+        background-color: $bg-color-semi-blue;
+        transition: 1s;
+        color: $bg-color-text-white;
+        font-weight: 500
+      }
+
+      mat-icon {
+        margin: 0 5%;
+      }
+    }
+  }
 }
 
-
-
-
-
-
+// ESTILO TITULOS DEL NAV
 .sidenav .mat-toolbar {
   padding: 0;
   background: $bg-color-semi-dark;
   height: 33%;
   color: $bg-color-text-grey;
+
   div.container-toolbar {
     position: absolute;
     top: 3.5%;
-    div.container-all{
-      margin-left: 8%; 
-      div.container-logo{
+
+    div.container-all {
+      margin-left: 8%;
+
+      div.container-logo {
         text-transform: uppercase;
         font-size: 1rem;
         margin-bottom: 2%;
-        img{
+
+        img {
           width: 10%;
           margin-right: 2%;
         }
       }
-      div.icon-sede{
+
+      div.icon-sede {
         font-size: .8rem;
         letter-spacing: .1rem;
         display: flex;
-        mat-icon{
+
+        mat-icon {
           margin-right: 2%;
         }
       }
     }
-    div.container-user{
+
+    div.container-user {
       text-align: center;
       margin-top: 15%;
-      h1.title-user{
+
+      h1.title-user {
         font-size: 1.8rem;
         text-align: center;
         letter-spacing: .2rem;
         font-family: $font-first;
         font-weight: 400;
       }
-      h1.email-user{
+
+      h1.email-user {
         font-size: 1rem;
         font-family: $font-first;
         font-weight: 200;
@@ -93,13 +119,29 @@ mat-nav-list {
   }
 }
 
-.s-logoUser_nav{
-  right: 40%;
-  top: 26%;
+// ESTILO AVATAR DEL NAV
+.container-avatar-user {
+  text-align: center;
+  top: 25%;
   position: absolute;
+  left: 30%;
+
+  .s-logoUser_nav {
+    // right: 40%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+
+    font-size: 10rem;
+    background-color: #2D323E;
+    border-radius: 100%;
+    height: 15%;
+    width: 100%;
+  }
 }
 
-.s-toolbar{
+// ESTILO TOOLBAR
+.s-toolbar {
   position: sticky;
   top: 0;
   z-index: 1;
@@ -108,20 +150,56 @@ mat-nav-list {
   color: $bg-color-text-white;
 }
 
-mat-sidenav{
+mat-sidenav {
   overflow: $hidden;
 }
+
+// ESTILO INPUT SEARCH
 mat-sidenav-content {
   mat-toolbar.s-toolbar {
     div {
       padding-left: 30%;
+
       div {
         display: flex;
         justify-content: space-around;
-        mat-icon {
-        font-size: 3rem;
+
+        mat-icon.icon-search {
+          font-size: 3rem;
         }
       }
     }
   }
+}
+
+// ESTILO ICONOS DEL TOOLBAR
+.container-icon-all {
+  width: 45%;
+  display: flex;
+  justify-content: flex-end;
+
+  .container-icon {
+    align-items: center;
+    // display: flex;
+    width: 100%;
+
+    div.active {
+      width: 100%;
+      margin-top: 20%;
+      align-items: center;
+    }
+  }
+}
+
+// TAMAÑOS FUENTE EN EMS
+.size-3 {
+  font-size: 3em;
+}
+
+.size-1 {
+  font-size: 1.1em;
+}
+
+.cursor {
+  cursor: pointer;
 }
