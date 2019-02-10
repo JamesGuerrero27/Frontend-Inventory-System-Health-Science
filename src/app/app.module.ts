@@ -8,17 +8,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 
 // IMPORT PARA ANGULAR MATERIAL
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
+
+import { LoadingComponent } from './@theme/loading/loading.component'
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, 
+  MatIconModule, MatListModule, MatCardModule, 
+  MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
+    LoadingComponent,
     RoutingComponents,
     DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent]
 })
