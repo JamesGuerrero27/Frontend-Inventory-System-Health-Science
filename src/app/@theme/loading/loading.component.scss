@@ -1,0 +1,26 @@
+$backgroundCard: #2E323D;
+
+.card-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: $backgroundCard;
+
+  .spinner {
+    top: 35%;
+  }
+
+  .figure-img {
+  width: 10%; 
+  top: 30%;
+
+  .logoPositivo {
+    top: 35%;
+    width: 100%;  
+   }
+  }
+}
+
+
+

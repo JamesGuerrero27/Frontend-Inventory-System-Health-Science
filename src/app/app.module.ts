@@ -1,24 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './@theme/auth/login/login.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavComponent } from './@theme/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 
 // IMPORT PARA ANGULAR MATERIAL
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-import { LoadingComponent } from './@theme/loading/loading.component';
+
+import { LoadingComponent } from './@theme/loading/loading.component'
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, 
+  MatIconModule, MatListModule, MatCardModule, 
+  MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NavComponent,
-    LoadingComponent
+    LoadingComponent,
+    RoutingComponents,
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -31,9 +36,14 @@ import { LoadingComponent } from './@theme/loading/loading.component';
     MatIconModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

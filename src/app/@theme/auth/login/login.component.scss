@@ -1,0 +1,92 @@
+// Declaracion de variables
+// COLORES
+$bg-color-blue: #00CBFE;
+$bg-color-dark: #2D323E;
+$bg-color-semi-dark: #1E212A;
+$bg-color-text-grey: #D4DAE0;
+$bg-color-text-white: #fff;
+$color-text: #53575A;
+
+// FUENTES
+$font-first : 'Nunito Sans',
+sans-serif;
+
+.color-primary {
+  background-color: $bg-color-blue;
+  overflow: hidden;
+
+  div {
+    figure.logo {
+      margin: 10%;
+    }
+  }
+
+  div {
+    figure.animate {
+      margin-top: 10%;
+
+      img {
+        width: 60%
+      }
+
+    }
+  }
+}
+
+// Style for Container FormField Login
+div.container-login {
+  margin: 15% 10% auto;
+
+  h1 {
+    font-family: $font-first;
+    color: $color-text;
+    font-size: 2.8rem;
+    letter-spacing: .1em;
+    line-height: 1.5em;
+    font-weight: 200;
+  }
+
+  // Style for Input Password Login
+  .container-input-login {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0 0 0;
+    font-size: 2rem;
+  }
+
+  .container-input-login>* {
+    width: 100%;
+  }
+
+  // Style RadioButtom
+  .btn-radio {
+    display: flex;
+    justify-content: space-between;
+
+    .mat-radio-button~.mat-radio-button {
+      margin-left: 16px;
+    }
+
+    .mat-radio-button {
+      color: $color-text;
+      font-size: 1.2rem;
+    }
+
+    a {
+      color: $color-text;
+      font-size: 1.2rem;
+    }
+  }
+
+  .btnAcLogin {
+    width: 100%;
+    padding: 3%;
+    margin-top: 10%;
+    background-color: #00CBFE;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+}

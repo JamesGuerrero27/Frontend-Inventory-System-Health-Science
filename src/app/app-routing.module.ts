@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Importando los componentes para enrutarlos.
 import { NavComponent } from './@theme/nav/nav.component';
+import { LoginComponent } from './@theme/auth/login/login.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,12 @@ const routes: Routes = [
     component: NavComponent
   },
   {
-    path: '**', component: NavComponent
-  }
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login' }
+  },
+  {
+    path: '**', redirectTo: '/' + LoginComponent}
 ];
 
 @NgModule({
@@ -23,3 +28,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
+export const RoutingComponents = [NavComponent, LoginComponent];
