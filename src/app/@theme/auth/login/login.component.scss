@@ -112,7 +112,7 @@ sans-serif;
     h1 {
       font-family: $font-first;
       color: $color-text;
-      font-size: 2.8rem;
+      font-size: 1.8rem;
       letter-spacing: .1em;
       line-height: 1.5em;
       font-weight: 200;
@@ -147,7 +147,7 @@ sans-serif;
       display: flex;
       flex-direction: column;
       margin: 5% 0 0 0;
-      font-size: 2rem;
+      font-size: 1rem;
 
       // RESOLUCION PHONE > 576px
       @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
@@ -183,7 +183,7 @@ sans-serif;
       .mat-radio-button,
       a {
         color: $color-text;
-        font-size: 1.2rem;
+        font-size: .8rem;
 
         // ORIENTACION HORIZONTAL >1200px
         @media screen and (orientation: landscape) and (max-width: $break-extraLarge) {
