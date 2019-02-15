@@ -1,60 +1,75 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
 
-      <mat-toolbar>
-        <div class="container-toolbar"> 
-          <div class="container-all">
-            <div class="container-logo">
-              <img src="../../../assets/img/logoNegativo.png" alt="Logo">Enfermeria Auxiliar</div>
-            <div class="icon-sede"><mat-icon >account_balance</mat-icon> Ceutec Norte | San Pedro Sula  </div>
+    <mat-toolbar>
+      <div class="container-toolbar">
+        <div class="container-all">
+          <div class="container-logo">
+            <div>
+              <img src="../../../assets/img/logoNegativo.png" alt="Logo"><span>Enfermeria Auxiliar</span>
+            </div>
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+              <mat-icon matSuffix class="style" aria-label="Side nav toggle icon">arrow_back</mat-icon>
+            </button>
           </div>
-          <div class="container-user">
-            <h1 class="title-user">Jesus Sarmiento</h1>
-            <h1 class="email-user">jesus.sarmiento@gmail.com</h1>
+          <div class="icon-sede">
+            <mat-icon>account_balance</mat-icon> <span>Ceutec Norte | San Pedro Sula </span>
           </div>
-        </div> 
-           <div class="container-avatar-user">
-             <mat-icon matSuffix class="s-logoUser_nav">account_circle</mat-icon>
-           </div>
-      </mat-toolbar>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="navbar-scroll-container">
+      <div class="container-title">
+        <div class="container-user">
+          <h1 class="title-user">Jesus Sarmiento</h1>
+          <h1 class="email-user">jesus.sarmiento@gmail.com</h1>
+        </div>
+        <div class="container-avatar-user">
+          <mat-icon matSuffix class="s-logoUser_nav">account_circle</mat-icon>
+        </div>
+      </div>
 
-    <mat-nav-list>
+      <mat-nav-list>
         <div class="title-list-item">
-            <a class="text-muted">APLICACIONES</a>
+          <a class="text-muted">APLICACIONES</a>
         </div>
         <div class="container-item">
           <a mat-list-item routerLink="." class="main-list">
-            <mat-icon >dashboard</mat-icon>DashBoard</a>
+            <mat-icon>dashboard</mat-icon>DashBoard
+          </a>
           <a mat-list-item routerLink=".">
-            <mat-icon >assignment</mat-icon>Requisicion</a>
+            <mat-icon>assignment</mat-icon>Requisicion
+          </a>
           <a mat-list-item routerLink=".">
-            <mat-icon >shopping_basket</mat-icon>Productos</a>
+            <mat-icon>shopping_basket</mat-icon>Productos
+          </a>
           <a mat-list-item routerLink=".">
-            <mat-icon >meeting_room</mat-icon>Bodega</a>
+            <mat-icon>meeting_room</mat-icon>Bodega
+          </a>
           <a mat-list-item routerLink=".">
-            <mat-icon >book</mat-icon>Inventario</a>
+            <mat-icon>book</mat-icon>Inventario
+          </a>
           <a mat-list-item routerLink="login" routerLinkActive="active">
-            <mat-icon >account_balance</mat-icon>Login</a>
+            <mat-icon>exit_to_app</mat-icon>Logout
+          </a>
         </div>
-    </mat-nav-list>
+      </mat-nav-list>
+
+    </div>
   </mat-sidenav>
-  
+
   <mat-sidenav-content>
     <mat-toolbar class="s-toolbar">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
       <!-- BUSQUEDA -->
-      <span  class="w-50">
+      <span class="container-search">
         <mat-form-field appearance="legacy" class="w-100">
           <mat-label>Search</mat-label>
           <input matInput>
@@ -63,20 +78,20 @@
       </span>
 
       <!-- ICONOS -->
-        <div class="mat-form-field-wrapper container-icon-all">
-          <div class="container-icon">
-            <mat-icon matSuffix class="w-100 size-3 cursor">notifications</mat-icon>
-            <div class="active">
-              <mat-icon matSuffix class="mr-2 text-success">fiber_manual_record</mat-icon>
-              <h1 class="size-1">Activo</h1>
-             </div>
-            <mat-icon matSuffix class="w-100 size-3">account_circle</mat-icon>
-            <mat-icon matSuffix class="w-50 size-3 cursor">more_vert</mat-icon>
+      <div class="mat-form-field-wrapper container-icon-all">
+        <div class="container-icon">
+          <mat-icon matSuffix class="w-100 size-3 cursor">notifications</mat-icon>
+          <div class="active">
+            <mat-icon matSuffix class="mr-2 text-success">fiber_manual_record</mat-icon>
+            <h1 class="size-1">Activo</h1>
           </div>
+          <mat-icon matSuffix class="w-100 size-3">account_circle</mat-icon>
+          <mat-icon matSuffix class="w-50 size-3 cursor">more_vert</mat-icon>
         </div>
+      </div>
 
     </mat-toolbar>
-    
+
     <!--INICIO CONTENIDO -->
     <app-dashboard></app-dashboard>
     <!--FIN CONTENIDO -->
