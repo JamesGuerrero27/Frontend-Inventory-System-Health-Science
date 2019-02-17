@@ -26,7 +26,7 @@ sans-serif;
   height: 100%;
 
   // RESOLUCION PHONE AND IPAD > 1200px > 768px > 576px
-  @media screen and (max-width: $break-extraSmall), (max-width: $break-medium), (max-width: $break-extraLarge) {
+  @media screen and (max-width: $break-extraSmall), (max-width: $break-medium), (max-width: $break-extraLarge) and (orientation:portrait) {
     display: none;
   }
 
@@ -38,6 +38,11 @@ sans-serif;
   // ORIENTACION HORIZONTAL
   @media screen and (orientation:landscape) and (max-width: $break-medium) {
     display: inline-block;
+  }
+
+    // ORIENTACION HORIZONTAL
+  @media screen and (orientation:landscape) and (max-width: $break-extraSmall) {
+    display: none;
   }
 
   div {
@@ -79,7 +84,7 @@ sans-serif;
     // RESOLUCION PHONE AND IPAD > 1200px > 768px > 576px
     @media screen and (max-width: $break-extraSmall),
     (max-width: $break-medium),
-    (max-width: $break-extraLarge) {
+    (max-width: $break-extraLarge) and (orientation:portrait) {
       display: flex;
       width: 50%;
 
@@ -92,7 +97,7 @@ sans-serif;
   // RESOLUCION PHONE AND IPAD > 1200px > 768px > 576px
   @media screen and (max-width: $break-extraSmall),
   (max-width: $break-medium),
-  (max-width: $break-extraLarge) {
+  (max-width: $break-extraLarge) and (orientation:portrait) {
     width: 100%;
   }
 
@@ -105,7 +110,7 @@ sans-serif;
     }
 
     // ORIENTACION PHONE
-    @media screen and (max-width: $break-extraSmall) {
+    @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
       margin: 25% 10% auto;
     }
 
@@ -131,12 +136,13 @@ sans-serif;
       }
 
       // RESOLUCION IPAD > 768px
-      @media screen and (max-width: $break-medium) {
+      @media screen and (max-width: $break-medium) and (orientation:portrait) {
         letter-spacing: normal;
+        font-size: 3rem;
       }
 
       // RESOLUCION PHONE > 576px
-      @media screen and (max-width: $break-extraSmall) {
+      @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
         font-size: 1.5rem;
         letter-spacing: normal;
       }
@@ -150,7 +156,7 @@ sans-serif;
       font-size: 1rem;
 
       // RESOLUCION PHONE > 576px
-      @media screen and (max-width: $break-extraSmall) {
+      @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
         margin: 0;
         font-size: 1.1rem;
       }
@@ -172,7 +178,7 @@ sans-serif;
       justify-content: space-between;
 
       // RESOLUCION PHONE > 576px
-      @media screen and (max-width: $break-extraSmall) {
+      @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
         display: block;
       }
 
@@ -196,7 +202,7 @@ sans-serif;
         }
 
         // RESOLUCION PHONE > 576px
-        @media screen and (max-width: $break-extraSmall) {
+        @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
           font-size: 1rem;
           display: block;
         }
@@ -213,7 +219,7 @@ sans-serif;
       border-radius: 10px;
       cursor: pointer;
 
-      @media screen and (max-width: $break-extraSmall) {
+      @media screen and (max-width: $break-extraSmall) and (orientation:portrait) {
         font-size: 1rem;
         border-radius: 5px;
       }
