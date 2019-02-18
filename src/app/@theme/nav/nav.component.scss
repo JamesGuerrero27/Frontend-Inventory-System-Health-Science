@@ -247,6 +247,13 @@ mat-sidenav-content {
   mat-toolbar.s-toolbar {
     div {
       padding-left: 30%;
+      
+      // RESOLUCION PHONE > 576px
+      @media screen and (orientation:landscape) and (min-width: 453px) and (max-width: 768px) {
+        padding-left: 0;
+        font-size: .7rem;
+        width: 37%;
+      }
 
       div {
         display: flex;
@@ -278,7 +285,7 @@ mat-sidenav-content {
 
     div.active {
       width: 100%;
-      margin-top: 20%;
+      margin: 20% 10% auto;
       align-items: center;
     }
   }
