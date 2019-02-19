@@ -11,7 +11,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-
+  private pages:Array<string>= ['home','requisition','product', 'cellar', 'inventory'];
+  private showPage: boolean;
+  private page: string;
+  
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -23,5 +26,18 @@ export class NavComponent {
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));
   }
 
+  ngOnInit() {
+    this.showPage = false;
+    this.page = 'dashboard';
+  }
 
+  redirectToPage(page:string):any{
+    debugger
+    this.pages.forEach(element => {
+      if(page == element){
+        this.showPage=true;
+        this.page = element;
+      }
+    });
+  }
 }

@@ -6,6 +6,7 @@ import { NavComponent } from './@theme/nav/nav.component';
 import { LoginComponent } from './@theme/auth/login/login.component';
 import { LoadingComponent } from './@theme/loading/loading.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,13 @@ const routes: Routes = [
     data: { title: 'Loading' }
   },
   {
-    path: '**', redirectTo: 'login' + LoginComponent}
+    path: 'product',
+    component: ProductsComponent,
+    data: { title: 'productos' }
+  },
+  {
+    path: '**', redirectTo: 'login' + LoginComponent
+  }
 ];
 
 @NgModule({
@@ -41,4 +48,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [NavComponent, LoginComponent, LoadingComponent, DashboardComponent];
+export const RoutingComponents = [NavComponent, LoginComponent, LoadingComponent, DashboardComponent, ProductsComponent];

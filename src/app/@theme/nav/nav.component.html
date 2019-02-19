@@ -37,13 +37,13 @@
           <a class="text-muted">APLICACIONES</a>
         </div>
         <div class="container-item">
-          <a mat-list-item routerLink="." class="main-list">
+          <a mat-list-item routerLink="." routerLinkActive="active" class="main-list">
             <mat-icon>dashboard</mat-icon>DashBoard
           </a>
           <a mat-list-item routerLink=".">
             <mat-icon>assignment</mat-icon>Requisicion
           </a>
-          <a mat-list-item routerLink=".">
+          <a mat-list-item [id]='product' (click)="redirectToPage('product')">
             <mat-icon>shopping_basket</mat-icon>Productos
           </a>
           <a mat-list-item routerLink=".">
@@ -52,7 +52,7 @@
           <a mat-list-item routerLink=".">
             <mat-icon>book</mat-icon>Inventario
           </a>
-          <a mat-list-item routerLink="login" routerLinkActive="active">
+          <a mat-list-item routerLink="../login" >
             <mat-icon>exit_to_app</mat-icon>Logout
           </a>
         </div>
@@ -93,8 +93,12 @@
     </mat-toolbar>
 
     <!--INICIO CONTENIDO -->
-    <app-dashboard></app-dashboard>
+    <app-dashboard *ngIf="page =='dashboard'"></app-dashboard>
     <!--FIN CONTENIDO -->
+
+    <!--INICIO VISTA PRODUCTOS -->
+    <app-products *ngIf="showPage && page=='product'" ></app-products>
+    <!--FIN VISTA PRODUCTOS -->
 
   </mat-sidenav-content>
 </mat-sidenav-container>
