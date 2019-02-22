@@ -11,9 +11,9 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-  private pages:Array<string>= ['home','requisition','product', 'cellar', 'inventory'];
-  private showPage: boolean;
-  private page: string;
+  private _pages:Array<string>= ['home','requisition','product', 'cellar', 'inventory'];
+  public showPage: boolean;
+  public page: string;
   
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -33,7 +33,7 @@ export class NavComponent {
 
   // Metodo para redireccionar paginas
   redirectToPage(page:string):any{
-    this.pages.forEach(element => {
+    this._pages.forEach(element => {
       if(page == element){
         this.showPage=true;
         this.page = element;
