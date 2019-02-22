@@ -13,6 +13,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule,
   MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatRadioModule } from '@angular/material/radio';
     ReactiveFormsModule,
     MatSelectModule,
     MatRadioModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
   bootstrap: [AppComponent]
 })

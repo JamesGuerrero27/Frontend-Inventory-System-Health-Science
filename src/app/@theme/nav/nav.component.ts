@@ -28,11 +28,11 @@ export class NavComponent {
 
   ngOnInit() {
     this.showPage = false;
-    this.page = 'dashboard';
+    this.page = 'home';
   }
 
+  // Metodo para redireccionar paginas
   redirectToPage(page:string):any{
-    debugger
     this.pages.forEach(element => {
       if(page == element){
         this.showPage=true;
