@@ -14,11 +14,13 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule,
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
+import { NotificationsComponent } from './@theme/notifications/notifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
+    NotificationsComponent,
 
   ],
   imports: [

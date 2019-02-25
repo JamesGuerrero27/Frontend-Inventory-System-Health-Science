@@ -1,10 +1,11 @@
 import {SelectionModel} from '@angular/cdk/collections';
-import {Component} from '@angular/core';
+import {Component, Query} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import { Product, State } from 'src/app/models/product';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { NotificationsComponent } from 'src/app/@theme/notifications/notifications.component'
 
 
 // Data de prueba de Productos hasta consumir servicios.
@@ -15,10 +16,12 @@ const PRODUCT_DATA: Product[] = [
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  providers: [NotificationsComponent]
 })
 export class ProductsComponent {
   public openWindowOf: string;
+  public isActive: string;
 
   displayedColumns: string[] = ['select','options', 'code', 'name', 'brand', 'type','cost', 'provider', 'storage'];
   dataSource = new MatTableDataSource<Product>(PRODUCT_DATA);
@@ -52,7 +55,7 @@ states: State[] = [
   }
 ];
 
-  constructor() {
+  constructor(private _notification:NotificationsComponent) {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
@@ -86,6 +89,30 @@ Selecciona todas las filas si no están todas seleccionadas; de lo contrario, la
   } 
 
   openTypeWindow (type: string): void {
+    let btnAdd = document.getElementById('add');
+    let btnfilter = document.getElementById('filter');
+
+    if (type=='create'){
+       btnAdd.classList.add('active');
+       btnfilter.classList.remove('active');
+    }else if (type=='filter'){
+      btnAdd.classList.remove('active');
+      btnfilter.classList.add('active');
+    }else{
+      btnAdd.classList.remove('active');
+      btnfilter.classList.remove('active');
+    }
     this.openWindowOf = type;
   }
+
+  saveItem(){
+    this.openTypeWindow('');
+    this._notification.notificationOpen('success', 'success!', 'El producto se almacenado con exito');
+  }
+  editItem(){
+    this.openTypeWindow('');
+    this._notification.notificationOpen('success', 'success!', 'El producto se editado con exito');
+  }
+
+
 }

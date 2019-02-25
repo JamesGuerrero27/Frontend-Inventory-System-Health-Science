@@ -1,3 +1,6 @@
+// VARIABLES DE COLORES
+$primary: #00CBFE;
+
 div.card-body {
     fieldset {
         .mat-icon {
@@ -59,10 +62,14 @@ div
     right: 3.5%;
     position: fixed;
     bottom: 3%;
-    a:first-child {
-        display: block;
-        margin-bottom: 20%;
-      }
+    :first-child {
+    display: block;
+    margin-bottom: 20%;
+    }
+    a.active {
+        background-color: $primary;
+    }  
+    
 }
 
 
