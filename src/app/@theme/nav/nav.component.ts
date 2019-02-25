@@ -11,10 +11,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-  private _pages:Array<string>= ['home','requisition','product', 'cellar', 'inventory'];
+  private _pages: Array<string> = ['home', 'requisition', 'product', 'cellar', 'inventory'];
   public showPage: boolean;
   public page: string;
-  
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -32,10 +32,11 @@ export class NavComponent {
   }
 
   // Metodo para redireccionar paginas
-  redirectToPage(page:string):any{
+  redirectToPage(page: string): any {
     this._pages.forEach(element => {
-      if(page == element){
-        this.showPage=true;
+// tslint:disable-next-line: triple-equals
+      if (page == element) {
+        this.showPage = true;
         this.page = element;
       }
     });

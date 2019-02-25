@@ -20,11 +20,11 @@ const PRODUCT_DATA: Product[] = [
 export class ProductsComponent {
   public openWindowOf: string;
 
-  displayedColumns: string[] = ['select','options', 'code', 'name', 'brand', 'type','cost', 'provider', 'storage'];
+  displayedColumns: string[] = ['select', 'options', 'code', 'name', 'brand', 'type', 'cost', 'provider', 'storage'];
   dataSource = new MatTableDataSource<Product>(PRODUCT_DATA);
   selection = new SelectionModel<Product>(true, []);
 
-  //Data de prueba de Autocompletados combo box
+  // Data de prueba de Autocompletados combo box
 states: State[] = [
   {
     name: 'Arkansas',
@@ -67,7 +67,7 @@ states: State[] = [
     return numSelected === numRows;
   }
 
-  /** 
+  /**
 Selecciona todas las filas si no están todas seleccionadas; de lo contrario, la selección se limpia. */
   masterToggle() {
     this.isAllSelected() ?
@@ -83,7 +83,7 @@ Selecciona todas las filas si no están todas seleccionadas; de lo contrario, la
     const filterValue = value.toLowerCase();
 
     return this.states.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
-  } 
+  }
 
   openTypeWindow (type: string): void {
     this.openWindowOf = type;

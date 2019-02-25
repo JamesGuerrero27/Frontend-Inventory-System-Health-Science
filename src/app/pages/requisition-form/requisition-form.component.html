@@ -1,0 +1,108 @@
+<div class="contaiiner">
+    <div class="card m-4">
+
+        <div class="card-header d-flex justify-content-start">
+            <mat-icon matSuffix class="size-3 mr-2">account_balance_wallet</mat-icon>
+            <h5>Crear Requisicion</h5>
+        </div>
+        <div class="card-body">
+            <!-- Inicio de los inputs -->
+            <form class="example-form">
+                <div class="row">
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Numero de Requisicion" value="">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Fecha de Requisicion" value="">
+                    </mat-form-field>
+                </div>
+            </form>
+            <!-- Fin de los inputs -->
+            <!-- Inicio del acordion -->
+            <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear" hidden>
+                {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+            </button>
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Informacion General</ng-template>
+                        <div class="input-group">
+                            <mat-form-field>
+                                <input matInput placeholder="Asignatura" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Practica" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Docente" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Seccion" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field>
+                                <input matInput placeholder="Hora de clase" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Fecha a realizarse" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Solicitud de Insumos</ng-template>
+                        <mat-form-field>
+                            <input matInput placeholder="Item" formControlName="secondCtrl" required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
+                        </mat-form-field>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Informacion de Equipos</ng-template>
+                        <mat-form-field>
+                            <input matInput placeholder="Item" formControlName="secondCtrl" required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
+                        </mat-form-field>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Otros Articulos</ng-template>
+                    You are now done.
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+            <!-- Fin del acordion -->
+
+            <div class="mb-3">
+                <fieldset class="card">
+                    <div>
+
+                    </div>
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
