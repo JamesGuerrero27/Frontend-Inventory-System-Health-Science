@@ -10,7 +10,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 // IMPORT PARA ANGULAR MATERIAL
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, 
   MatIconModule, MatListModule, MatCardModule, 
-  MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
+  MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule,MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
@@ -39,7 +39,9 @@ import {MatTableModule} from '@angular/material/table';
     MatSelectModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule,
+    MatAutocompleteModule
   ],
   bootstrap: [AppComponent]
 })

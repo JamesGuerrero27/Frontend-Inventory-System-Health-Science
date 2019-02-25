@@ -5,40 +5,268 @@
           <mat-icon matSuffix class="size-3 mr-2">account_balance_wallet</mat-icon> <h5>Productos</h5>
         </div>
         <div class="card-body">
+
+          <!-- INICIO CONTENEDOR DE CREAR -->
+          <div class="mb-3" *ngIf="openWindowOf=='create'"> 
+              <fieldset class="card">
+              
+                <legend class="s-legend"><mat-icon matSuffix>filter_list</mat-icon><span>Crear un nuevo Producto</span> </legend>
+              
+                <div>
+  
+                  <form class="form-container">
+  
+                    <div class="container-input">
+  
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input type="text" matInput placeholder="Código">
+                        <mat-icon matSuffix>art_track</mat-icon>
+                      </mat-form-field>
+  
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input type="text" matInput placeholder="Nombre">
+                        <mat-icon matSuffix>shopping_basket</mat-icon>
+                      </mat-form-field>
+  
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                            <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                            <span>{{state.name}}</span> |
+                            <small>Population: {{state.population}}</small>
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+
+                      <mat-form-field class="form-field-full-width mr-4">
+                          <input matInput placeholder="Monto" type="number" class="example-right-align">
+                          <mat-icon matSuffix>attach_money</mat-icon>
+                      </mat-form-field>
+  
+                    </div>
+  
+                    <div class="container-input">
+  
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input type="text" matInput placeholder="Proveedor">
+                        <mat-icon matSuffix>person</mat-icon>
+                      </mat-form-field>
+  
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                            <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                            <span>{{state.name}}</span> |
+                            <small>Population: {{state.population}}</small>
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                            <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                            <span>{{state.name}}</span> |
+                            <small>Population: {{state.population}}</small>
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+
+                      <mat-form-field class="form-field-full-width mr-4">
+                        <input type="text" matInput placeholder="Imagen del Producto">
+                        <mat-icon matSuffix>person</mat-icon>
+                      </mat-form-field>
+  
+                    </div>
+                    <div class="w-50">
+                        <button mat-flat-button color="primary" (click)="openTypeWindow('');">Guardar</button>
+                    </div>
+                  </form>
+  
+                </div>
+  
+                
+
+              </fieldset>
+          </div>
+          <!-- FIN CONTENEDOR DE CREAR -->
+
+          <!-- INICIO CONTENEDOR DE FILTRO -->
+          <div class="mb-3" *ngIf="openWindowOf=='filter'"> 
+            <fieldset class="card">
+            
+              <legend class="s-legend"><mat-icon matSuffix>filter_list</mat-icon><span>Fitrar</span> </legend>
+            
+
+              <div>
+
+                <form class="form-container">
+
+                  <div class="container-input">
+
+                      <mat-form-field class="form-field-full-width">
+                        <input matInput #message maxlength="50" placeholder="Busqueda General">
+                        <mat-icon matSuffix>search</mat-icon>
+                        <mat-hint align="start"><strong>La cantidad de caracteres esta limitada</strong> </mat-hint>
+                        <mat-hint align="end">{{message.value.length}} / 50</mat-hint>
+                      </mat-form-field>
+
+                  </div>
+
+                  <div class="container-input">
+
+                    <mat-form-field class="form-field-full-width mr-4">
+                      <input type="tel" matInput placeholder="Código">
+                      <mat-icon matSuffix>art_track</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field-full-width mr-4">
+                      <input type="tel" matInput placeholder="Nombre">
+                      <mat-icon matSuffix>shopping_basket</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field-full-width">
+                      <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                      <mat-icon matSuffix>featured_play_list</mat-icon>
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                          <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                          <span>{{state.name}}</span> |
+                          <small>Population: {{state.population}}</small>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+
+                  </div>
+
+                  <div class="container-input">
+
+                    <mat-form-field class="form-field-full-width mr-4">
+                      <input type="tel" matInput placeholder="Proveedor">
+                      <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field class="form-field-full-width mr-4">
+                      <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                      <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                          <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                          <span>{{state.name}}</span> |
+                          <small>Population: {{state.population}}</small>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+                  
+                    <mat-form-field class="form-field-full-width">
+                      <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                      <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                          <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                          <span>{{state.name}}</span> |
+                          <small>Population: {{state.population}}</small>
+                        </mat-option>
+                      </mat-autocomplete>
+                    </mat-form-field>
+
+                  </div>
+
+                </form>
+
+              </div>
+             
+            </fieldset>
+          </div>
+          <!-- FIN CONTENEDOR DE FILTRO -->
+
+          <!-- INICIO CONTENEDOR DE LA TABLA -->
+          <div class="card">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-              
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                  <th mat-header-cell *matHeaderCellDef> No. </th>
-                  <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
-              
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef> Name </th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-              
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                  <th mat-header-cell *matHeaderCellDef> Weight </th>
-                  <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                </ng-container>
-              
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                  <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                  <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container>
-              
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              
-              
+              <!-- Checkbox Column -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()">
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="options">
+                <th mat-header-cell *matHeaderCellDef> Opciones </th>
+                <td mat-cell *matCellDef="let element"> 
+                  <a href=""> <mat-icon class="mr-4">edit</mat-icon ></a>
+                  <a href=""><mat-icon>delete</mat-icon></a>
+              </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="code">
+                <th mat-header-cell *matHeaderCellDef> Codigo </th>
+                <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="brand">
+                <th mat-header-cell *matHeaderCellDef> Marca </th>
+                <td mat-cell *matCellDef="let element"> {{element.brand}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Tipo de Producto </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="cost">
+                <th mat-header-cell *matHeaderCellDef> Costo </th>
+                <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="provider">
+                <th mat-header-cell *matHeaderCellDef>  Proveedor </th>
+                <td mat-cell *matCellDef="let element"> {{element.provider}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="storage">
+                <th mat-header-cell *matHeaderCellDef>  Bodega </th>
+                <td mat-cell *matCellDef="let element"> {{element.storage}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                  (click)="selection.toggle(row)">
+              </tr>
+            </table>    
+          </div>
+          <!-- FIN CONTENEDOR DE LA TABLA -->
+       
         </div>
     </div>  
+</div>
+
+<div class="button-options">
+  <a mat-fab (click)="openTypeWindow('create');">
+    <mat-icon>add</mat-icon>
+  </a>
+
+  <a mat-fab (click)="openTypeWindow('filter');">
+    <mat-icon>filter_list</mat-icon>
+  </a>
 </div>
