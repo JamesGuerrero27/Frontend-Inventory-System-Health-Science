@@ -36,11 +36,6 @@ const routes: Routes = [
     data: { title: 'productos' }
   },
   {
-    path: 'requisition',
-    component: RequisitionFormComponent,
-    data: { title: 'Requisition' }
-  },
-  {
     path: '**', redirectTo: 'login' + LoginComponent
   }
 ];
