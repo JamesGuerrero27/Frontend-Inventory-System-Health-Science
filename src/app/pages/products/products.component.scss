@@ -1,3 +1,10 @@
+// VARIABLES MODO RESPONSIVE
+$break-extraSmall : 576px; //menor
+$break-small : 576px; //mayor all
+$break-medium : 768px;
+$break-large : 992px;
+$break-extraLarge : 1200px;
+
 // VARIABLES DE COLORES
 $primary: #00CBFE;
 
@@ -20,6 +27,12 @@ div.card-body {
             border-radius: 50px;  
             display: flex;
             align-items: center;
+
+            // RESOLUCION PHONE > 576px
+            @media screen and (max-width: $break-extraSmall){
+                font-size: .6rem;
+            }
+
             span {
                 padding: 0 10px 0 10px;
             }
@@ -32,9 +45,21 @@ div.card-body {
                 max-width: 100%;
                 width: 100%;
                 padding: 1.5%;
+
+                 // RESOLUCION PHONE > 576px
+                 @media screen and (max-width: $break-extraSmall){
+                    padding: 5%;
+                }
+
                 div.container-input {
                     display: flex;
                     margin: 0 0 2%;
+
+                    // RESOLUCION PHONE > 576px
+                    @media screen and (max-width: $break-extraSmall){
+                        display: block;
+                    }
+
                     mat-form-field.form-field-full-width {
                         width: 100%;  
                     }   

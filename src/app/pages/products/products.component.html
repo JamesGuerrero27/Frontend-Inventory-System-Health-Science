@@ -33,13 +33,13 @@
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="brandCtrl">
                         <mat-icon matSuffix>featured_play_list</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-                            <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
-                            <span>{{state.name}}</span> |
-                            <small>Population: {{state.population}}</small>
+                          <mat-option *ngFor="let brand of filteredBrand | async" [value]="brand.productBrandName">
+                            <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+                            <span>{{brand.productBrandName}}</span> |
+                            <!-- <small>Population: {{brand.productBrandName}}</small> -->
                           </mat-option>
                         </mat-autocomplete>
                       </mat-form-field>
@@ -59,7 +59,7 @@
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="brandCtrl">
                         <mat-icon matSuffix>account_balance_wallet</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -71,7 +71,7 @@
                       </mat-form-field>
                     
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="brandCtrl">
                         <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -124,7 +124,7 @@
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="brandCtrl">
                         <mat-icon matSuffix>featured_play_list</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -150,7 +150,7 @@
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="brandCtrl">
                         <mat-icon matSuffix>account_balance_wallet</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -162,7 +162,7 @@
                       </mat-form-field>
                     
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="brandCtrl">
                         <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -227,7 +227,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="form-field-full-width">
-                      <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                      <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="brandCtrl">
                       <mat-icon matSuffix>featured_play_list</mat-icon>
                       <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -248,7 +248,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="form-field-full-width mr-4">
-                      <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                      <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="brandCtrl">
                       <mat-icon matSuffix>account_balance_wallet</mat-icon>
                       <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
@@ -260,7 +260,7 @@
                     </mat-form-field>
                   
                     <mat-form-field class="form-field-full-width">
-                      <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="stateCtrl">
+                      <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="brandCtrl">
                       <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                       <mat-autocomplete #auto="matAutocomplete">
                         <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">

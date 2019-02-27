@@ -13,4 +13,10 @@ export interface State {
     flag: string;
     name: string;
     population: string;
-  }
+}
+
+export interface Brand {
+    productBrandId: number;
+    productBrandName: string;
+    //product2s: string;
+}
