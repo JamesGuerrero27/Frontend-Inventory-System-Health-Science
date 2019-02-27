@@ -38,21 +38,22 @@
                             <mat-form-field class="mr-2 w-100">
                                 <input matInput placeholder="Docente" formControlName="firstCtrl" required>
                             </mat-form-field>
-
-                        </div>
-                        <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
                                 <input matInput placeholder="Seccion" formControlName="firstCtrl" required>
                             </mat-form-field>
+
+                        </div>
+                        <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
                                 <input matInput placeholder="Hora de clase" formControlName="firstCtrl" required>
                             </mat-form-field>
                             <mat-form-field class="mr-2 w-100">
                                 <input matInput placeholder="Fecha a realizarse" formControlName="firstCtrl" required>
                             </mat-form-field>
-
-                            <mat-icon matSuffix class="size-3 mr-3 w-100 input-state">brightness_1</mat-icon>
-                          
+                            <div class="d-flex justify-content-start w-100">
+                                <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
+                                <span class="mr-2">Estado</span>
+                            </div>
                         </div>
                     </form>
                 </mat-step>
@@ -61,7 +62,7 @@
                         <ng-template matStepLabel>Solicitud de Insumos</ng-template>
                         <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Item" formControlName="secondCtrl" required>
+                                <input matInput placeholder="Cantidad" formControlName="secondCtrl" required>
                             </mat-form-field>
 
                             <mat-form-field class="mr-4 w-100">
@@ -82,7 +83,7 @@
                         <ng-template matStepLabel>Informacion de Equipos</ng-template>
                         <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Item" required>
+                                <input matInput placeholder="Cantidad" required>
                             </mat-form-field>
 
                             <mat-form-field class="mr-2 w-100">
@@ -96,29 +97,29 @@
                         </div>
                     </form>
                 </mat-step>
-                    <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
-                            <ng-template matStepLabel>Otros Articulos</ng-template>
-                            <div class="d-flex">
-                                <mat-form-field class="mr-2 w-100">
-                                    <input matInput placeholder="Item" required>
-                                </mat-form-field>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Otros Articulos</ng-template>
+                        <div class="d-flex">
+                            <mat-form-field class="mr-2 w-100">
+                                <input matInput placeholder="Cantidad" required>
+                            </mat-form-field>
 
-                                <mat-form-field class="mr-2 w-100">
-                                    <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
-                                </mat-form-field>
+                            <mat-form-field class="mr-2 w-100">
+                                <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
+                            </mat-form-field>
 
-                                <mat-form-field class="mr-2 w-100">
-                                    <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
-                                </mat-form-field>
-                                <mat-icon matSuffix class="size-3 mr-2 input-add">add_circle</mat-icon>
-                            </div>
-                        </form>
-                        <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button (click)="stepper.reset()">Reset</button>
+                            <mat-form-field class="mr-2 w-100">
+                                <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
+                            </mat-form-field>
+                            <mat-icon matSuffix class="size-3 mr-2 input-add">add_circle</mat-icon>
                         </div>
-                    </mat-step>
+                    </form>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Reset</button>
+                    </div>
+                </mat-step>
             </mat-vertical-stepper>
             <!-- Fin del acordion -->
 
