@@ -30,3 +30,182 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #D4D
 	}
 }
 
+
+// ESTILO GENERAL DE NOTIFICACIONES
+#notification-container {
+    display: block;
+    position: fixed;
+    bottom: 3%;
+    right: 26%;
+    width: 35%;
+	z-index: 9999999;
+	
+	
+	.notification {
+		display: block;
+		position: relative;
+		padding: 15px 15px 15px 60px;
+		overflow: hidden;
+		width: 100%;
+		border-radius: 4px;
+		box-shadow: 0 0 12px #999;
+		color: #fff;
+		-webkit-animation: show-notification 3s ease-out;
+		animation: show-notification 3s ease-out;
+
+		.notification-close {
+			padding: 0;
+			cursor: pointer;
+			background: none;
+			border: 0;
+			outline: none;
+			-webkit-appearance: none;
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			color: #fff;
+			text-shadow: 0 1px 0 #ddd;
+		}
+		
+		.notification-close::before {
+			font-family: 'Material Icons';
+			font-size: 12px;
+			font-weight: normal;
+			content: 'close';
+		}
+		
+		.notification-close:hover {
+			color: #666;
+		}
+		
+		.notification-title {
+			font-size: 1.1em;
+			font-weight: bold;
+		}
+	}
+	
+	.notification-success::before,
+	.notification-error::before,
+	.notification-info::before,
+	.notification-warning::before {
+		font-family: 'Material Icons';
+		font-size: 35px;
+		display: block;
+		position: absolute;
+		left: 15px;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+	
+	.notification-success {
+		background-color: #90b900;
+	}
+	
+	.notification-success::before {
+		content: 'check_circle';
+	}
+	
+	.notification-error {
+		background-color: #e85656;
+	}
+	
+	.notification-error::before {
+		content: 'error';
+	}
+	
+	.notification-info {
+		background-color: #2dacd1;
+	}
+	
+	.notification-info::before {
+		content: 'info';
+	}
+	
+	.notification-warning {
+		background-color: #dfb81c;
+	}
+	
+	.notification-warning::before {
+		content: 'warning';
+	}
+	
+	@-webkit-keyframes show-notification {
+		0% {
+			opacity: 0;
+			-webkit-transform: translate(0, -100%);
+		}
+		10% {
+			opacity: 1;
+			-webkit-transform: translate(0, 0);
+		}
+		90% {
+			opacity: 1;
+			-webkit-transform: translate(0, 0);
+		}
+		100% {
+			opacity: 0;
+			-webkit-transform: translate(0, -100%);
+		}
+	}
+	
+	@keyframes show-notification {
+		0% {
+			opacity: 0;
+			-webkit-transform: translate(0, 100%);
+			transform: translate(0, 100%);
+		}
+		10% {
+			opacity: 1;
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);
+		}
+		90% {
+			opacity: 1;
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);
+		}
+		100% {
+			opacity: 0;
+			-webkit-transform: translate(0, 100%);
+			transform: translate(0, 100%);
+		}
+	}
+}
+
+// PALETA DE COLORES GENERALES
+// VARIABLES DE COLORES
+$primary: #00CBFE;
+$secundary: #F55AA7;
+$enfasis: #FBA905;
+
+
+.my-bg-primary {
+	background-color: $primary;
+}
+
+.my-bg-secundary {
+	background-color: $secundary;
+}
+
+.my-bg-enfasis {
+	background-color: $enfasis
+}
+
+.my-color-primary {
+	color: $primary;
+}
+
+.my-color-secundary {
+	color: $secundary;
+}
+
+.my-color-enfasis {
+	color: $enfasis;
+}
+
+
+
+
+  
+

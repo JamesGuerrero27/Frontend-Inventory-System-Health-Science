@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,17 +17,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import { RequisitionFormComponent } from './pages/requisition-form/requisition-form.component';
+import { NotificationsComponent } from './@theme/notifications/notifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutingComponents,
     RequisitionFormComponent,
+    NotificationsComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     LayoutModule,
     MatToolbarModule,
