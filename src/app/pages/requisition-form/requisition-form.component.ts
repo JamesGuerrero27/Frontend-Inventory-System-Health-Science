@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-requisition-form',
@@ -11,7 +11,11 @@ export class RequisitionFormComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  Contador: number;
+  requisitionArr: [];
+
+  constructor(private _formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -21,5 +25,6 @@ export class RequisitionFormComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
+  }
 
-}
+

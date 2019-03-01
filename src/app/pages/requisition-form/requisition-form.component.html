@@ -10,9 +10,11 @@
             <form>
                 <div class="row">
 
-                    <mat-form-field class="example-full-width mr-4">
+                      <mat-form-field class="example-full-width mr-4">
                         <input matInput placeholder="Numero de Requisicion" value="">
                     </mat-form-field>
+
+
 
                     <mat-form-field class="example-full-width mr-4">
                         <input matInput placeholder="Fecha de Requisicion" value="">
@@ -78,6 +80,7 @@
                         </div>
                     </form>
                 </mat-step>
+                
                 <mat-step [stepControl]="secondFormGroup">
                     <form [formGroup]="secondFormGroup">
                         <ng-template matStepLabel>Informacion de Equipos</ng-template>
