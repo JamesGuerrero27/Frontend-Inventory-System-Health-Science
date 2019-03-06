@@ -44,14 +44,14 @@ export class ProductService {
     let data: any = {
       "productCode": products.productCode,
       "productName": products.productName,
-      "productBrandId": Number (products.productBrandId),
-      "typeProductId": Number (products.typeProductId),
-      "productCost":products.productCost,
-      "providersId": Number (products.providersId),
-      "storageId": Number (products.storageId)
+      "productCost": products.productCost,
+      "productBrandId": Number(products.productBrandId),
+      "providersId": Number(products.providersId),
+      "storageId": Number(products.storageId),
+      "typeProductId": Number(products.typeProductId)
     }
     console.log(JSON.stringify(data));
-    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, JSON.stringify(data) , this._headers);
+    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, data, this._headers);
   }
 
   // EDITAR PRODUCTOS

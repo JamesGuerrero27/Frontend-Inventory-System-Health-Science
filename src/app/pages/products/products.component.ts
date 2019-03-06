@@ -53,8 +53,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.getBrands();
     this.getProducts();
-    console.log('this._brand ngOnInit',this._brand);
-    
+    console.log('this._brand ngOnInit',this._brand); 
   }
 
   getBrands():void{
@@ -101,8 +100,10 @@ export class ProductsComponent implements OnInit {
     console.log("Imprimiendo DATA del FORM", this._newProduct);
     this._productService.createProduct(this._newProduct)
       .subscribe((data : Product ) =>{
-        debugger
         console.log('Suucess Create Product');
+        this.openTypeWindow('');
+        this._notification.notificationOpen('success', 'success!', 'Producto creado con exito');
+        this.getProducts();
       }, error => console.log("error "+ error));
   }
 
