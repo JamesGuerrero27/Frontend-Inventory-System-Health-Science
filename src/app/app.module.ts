@@ -18,6 +18,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import { RequisitionFormComponent } from './pages/requisition-form/requisition-form.component';
 import { NotificationsComponent } from './@theme/notifications/notifications.component';
+import { ProviderComponent } from './pages/provider/provider.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NotificationsComponent } from './@theme/notifications/notifications.com
     RoutingComponents,
     RequisitionFormComponent,
     NotificationsComponent,
+    ProviderComponent,
 
   ],
   imports: [

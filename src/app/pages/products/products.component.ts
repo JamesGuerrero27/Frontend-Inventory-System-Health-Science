@@ -19,12 +19,12 @@ export class ProductsComponent implements OnInit {
   public openWindowOf: string;
   public isActive: string;
   public _product:Array<Product>;
-  public _brand:Brand[];
-  private _newProduct : Product;
+  public _brand: Brand[];
+  private _newProduct: Product;
 
   // Trabajando con tablas
   public dataSource:any = [];
-  displayedColumns: string[] = ['select','options', 'code', 'name', 'brand', 'type','cost', 'provider', 'storage'];
+  displayedColumns: string[] = ['select','options', 'code', 'name', 'brand', 'type', 'cost', 'provider', 'storage'];
   public selection = new SelectionModel<Product>(true, []);
 
   // Instancias para los autocompleados
@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit {
 
   private status: boolean = false;
 
-  //Instanciando Formulario Reactivo
+  // Instanciando Formulario Reactivo
   productForm = new FormGroup({
     productCode: new FormControl(''),
     productName: new FormControl(''),
@@ -156,5 +156,4 @@ export class ProductsComponent implements OnInit {
     // TODO: Use EventEmitter with form value
     console.warn(this.productForm.value);
   }
-  
 }

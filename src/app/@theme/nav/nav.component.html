@@ -46,6 +46,9 @@
           <a mat-list-item (click)="redirectToPage('product')">
             <mat-icon>shopping_basket</mat-icon>Productos
           </a>
+          <a mat-list-item (click)="redirectToPage('provider')">
+            <mat-icon>person</mat-icon>Proveedores
+          </a>
           <a mat-list-item routerLink=".">
             <mat-icon>meeting_room</mat-icon>Bodega
           </a>
@@ -104,6 +107,10 @@
     <app-requisition-form *ngIf="showPage && page=='requisition'"></app-requisition-form>
 
     <!-- Fin de la vista de Requisicion -->
+
+    <!-- Inicio de Proveedores -->
+    <app-provider *ngIf="showPage && page=='provider'"></app-provider>
+    <!-- Fin de la vista de Proveedores -->
 
   </mat-sidenav-content>
 </mat-sidenav-container>

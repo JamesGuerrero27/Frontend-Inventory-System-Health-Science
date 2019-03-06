@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-  private _pages: Array<string> = ['home', 'requisition', 'product', 'cellar', 'inventory'];
+  private _pages: Array<string> = ['provider', 'home', 'requisition', 'product', 'cellar', 'inventory'];
   public showPage: boolean;
   public page: string;
 
