@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 
 // IMPORT PARA ANGULAR MATERIAL
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, 
-  MatIconModule, MatListModule, MatCardModule, 
-  MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule,MatCheckboxModule, MatAutocompleteModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule,
+  MatIconModule, MatListModule, MatCardModule,
+  MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule,
+  MatCheckboxModule, MatAutocompleteModule, MatStepperModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
+import { RequisitionFormComponent } from './pages/requisition-form/requisition-form.component';
 import { NotificationsComponent } from './@theme/notifications/notifications.component';
 
 
@@ -22,6 +24,7 @@ import { NotificationsComponent } from './@theme/notifications/notifications.com
   declarations: [
     AppComponent,
     RoutingComponents,
+    RequisitionFormComponent,
     NotificationsComponent,
 
   ],
@@ -46,7 +49,8 @@ import { NotificationsComponent } from './@theme/notifications/notifications.com
     MatProgressSpinnerModule,
     MatTableModule,
     MatCheckboxModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatStepperModule
   ],
   bootstrap: [AppComponent]
 })

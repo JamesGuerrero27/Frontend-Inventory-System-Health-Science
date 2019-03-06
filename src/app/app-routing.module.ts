@@ -7,6 +7,7 @@ import { LoginComponent } from './@theme/auth/login/login.component';
 import { LoadingComponent } from './@theme/loading/loading.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { RequisitionFormComponent } from './pages/requisition-form/requisition-form.component';
 
 const routes: Routes = [
   {
@@ -48,4 +49,5 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [NavComponent, LoginComponent, LoadingComponent, DashboardComponent, ProductsComponent];
+// tslint:disable-next-line: max-line-length
+export const RoutingComponents = [NavComponent, LoginComponent, LoadingComponent, DashboardComponent, ProductsComponent, RequisitionFormComponent];

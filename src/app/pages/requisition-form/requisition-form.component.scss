@@ -1,0 +1,30 @@
+div {
+    mat-step-header {
+        div.mat-step-icon-state-number{
+            background-color: #48C0FD !important;
+        }
+    } 
+}
+
+div.card-body {
+    form {
+        margin-left: 4.5%;
+    }
+}
+
+.input-add{
+    color: #00CBFE;
+    &:hover{
+        color: #00CBFE;
+        cursor: pointer;
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1)
+    }
+}
+
+.input-state{
+    color: #00CBFE;
+}

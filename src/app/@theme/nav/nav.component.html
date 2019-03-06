@@ -40,7 +40,7 @@
           <a mat-list-item routerLinkActive="active" class="main-list" (click)="redirectToPage('home')">
             <mat-icon>dashboard</mat-icon>DashBoard
           </a>
-          <a mat-list-item routerLink=".">
+          <a mat-list-item (click)="redirectToPage('requisition')">
             <mat-icon>assignment</mat-icon>Requisicion
           </a>
           <a mat-list-item (click)="redirectToPage('product')">
@@ -99,6 +99,11 @@
     <!--INICIO VISTA PRODUCTOS -->
     <app-products *ngIf="showPage && page=='product'" ></app-products>
     <!--FIN VISTA PRODUCTOS -->
+
+    <!-- Inicio de Requisicion -->
+    <app-requisition-form *ngIf="showPage && page=='requisition'"></app-requisition-form>
+
+    <!-- Fin de la vista de Requisicion -->
 
   </mat-sidenav-content>
 </mat-sidenav-container>
