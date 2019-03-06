@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
   public openWindowOf: string;
   public isActive: string;
   public _product:Array<Product>;
-  private _brand:Brand[];
+  public _brand:Brand[];
   private _newProduct : Product;
 
   // Trabajando con tablas
