@@ -18,12 +18,12 @@
               
                 <div>
   
-                  <form [formGroup]="productForm" (ngSubmit)="onCreateProduct()">
+                  <form [formGroup]="productForm" (ngSubmit)="onCreateProduct()" class="form-container">
   
                     <div class="container-input">
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input type="text" matInput placeholder="Código" formControlName="productCode">
+                        <input type="text" matInput placeholder="Código" formControlName="productCode" required>
                         <mat-icon matSuffix>art_track</mat-icon>
                       </mat-form-field>
   
@@ -82,15 +82,15 @@
                       </mat-form-field>
   
                     </div>
+
                     <div class="w-50">
-                        <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!productForm.valid">Crear</button>
+                        <button mat-flat-button class="my-bg-primary text-white w-25" type="submit" [disabled]="!productForm.valid">Crear Producto</button>
                     </div>
+
                   </form>
   
                 </div>
   
-                
-
               </fieldset>
           </div>
           <!-- FIN CONTENEDOR DE CREAR -->
@@ -103,32 +103,32 @@
               
                 <div>
   
-                  <form class="form-container">
+                  <form [formGroup]="productForm" (ngSubmit)="onEditProduct()" class="form-container">
   
                     <div class="container-input">
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input type="text" matInput placeholder="Código">
+                        <input type="text" matInput placeholder="Código" formControlName="productCode"  [(ngModel)]="productCode" required>
                         <mat-icon matSuffix>art_track</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input type="text" matInput placeholder="Nombre">
+                        <input type="text" matInput placeholder="Nombre" name="productName" formControlName="productName" required>
                         <mat-icon matSuffix>shopping_basket</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" [formControl]="brandCtrl">
+                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" formControlName="productBrandId"  name="productBrandId" required >
                         <mat-icon matSuffix>featured_play_list</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
-                            <span>{{state}}</span> |
+                          <mat-option *ngFor="let brand of filteredBrand | async" [value]="brand.productBrandName">
+                            <span>{{brand.productBrandName}}</span> |
                           </mat-option>
                         </mat-autocomplete>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
-                          <input matInput placeholder="Monto" type="number" class="example-right-align">
+                          <input matInput placeholder="Monto" type="number" class="example-right-align" name="productCost" formControlName="productCost" required>
                           <mat-icon matSuffix>attach_money</mat-icon>
                       </mat-form-field>
   
@@ -137,12 +137,12 @@
                     <div class="container-input">
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input type="text" matInput placeholder="Proveedor">
+                        <input type="text" matInput placeholder="Proveedor"  name="providersId" formControlName="providersId" required >
                         <mat-icon matSuffix>person</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" [formControl]="brandCtrl">
+                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" formControlName="storageId" name="storageId" required >
                         <mat-icon matSuffix>account_balance_wallet</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state">
@@ -152,7 +152,7 @@
                       </mat-form-field>
                     
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" [formControl]="brandCtrl">
+                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" formControlName="typeProductId" name="typeProductId" required >
                         <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                         <mat-autocomplete #auto="matAutocomplete">
                           <mat-option *ngFor="let state of filteredStates | async" [value]="state">
@@ -167,15 +167,15 @@
                       </mat-form-field>
   
                     </div>
+
                     <div class="w-50">
-                        <button mat-flat-button class="my-bg-primary text-white" (click)="editItem();">Editar</button>
+                        <button mat-flat-button class="my-bg-primary text-white w-25" type="submit" [disabled]="!productForm.valid">Editar Producto</button>
                     </div>
+
                   </form>
   
                 </div>
   
-                
-
               </fieldset>
           </div>
           <!-- FIN CONTENEDOR DE EDITAR -->
@@ -303,12 +303,12 @@
             
               <ng-container matColumnDef="brand">
                 <th mat-header-cell *matHeaderCellDef> Marca </th>
-                <td mat-cell *matCellDef="let element"> {{element.productBrand}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.productBrandId}} </td>
               </ng-container>
 
               <ng-container matColumnDef="type">
                 <th mat-header-cell *matHeaderCellDef> Tipo de Producto </th>
-                <td mat-cell *matCellDef="let element"> {{element.typeProduct}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.typeProductId}} </td>
               </ng-container>
 
               <ng-container matColumnDef="cost">
@@ -318,12 +318,12 @@
             
               <ng-container matColumnDef="provider">
                 <th mat-header-cell *matHeaderCellDef>  Proveedor </th>
-                <td mat-cell *matCellDef="let element"> {{element.providers}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.providersId}} </td>
               </ng-container>
 
               <ng-container matColumnDef="storage">
                 <th mat-header-cell *matHeaderCellDef>  Bodega </th>
-                <td mat-cell *matCellDef="let element"> {{element.storage}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.storageId}} </td>
               </ng-container>
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
