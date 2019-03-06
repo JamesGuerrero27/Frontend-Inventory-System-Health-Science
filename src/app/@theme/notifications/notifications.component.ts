@@ -23,7 +23,6 @@ export class NotificationsComponent implements OnInit {
   
 	// INICIO, FUNCIONES ACTIVAR NOTIFIACIONES
 	createNotification() {
-    debugger
 		this.notification = document.createElement("div");
 		var btn = document.createElement("button");
 		var title = document.createElement("div");
@@ -48,7 +47,6 @@ export class NotificationsComponent implements OnInit {
 	}
 	
 	updateNotification(type: any, title: string, message: string) {
-    debugger
 	this.notification.className = "notification notification-" + type;
 	this.notification.querySelector(".notification-title").innerHTML = title;
 	this.notification.querySelector(
@@ -57,7 +55,6 @@ export class NotificationsComponent implements OnInit {
 	}
 	
 	showNotification(type:any, title:string, message:string) {
-    debugger
 		if (this.visible) {
 			this.queue.push([type, title, message]);
 			return;
@@ -71,7 +68,6 @@ export class NotificationsComponent implements OnInit {
 	}
 	
 	hideNotification() { 
-    debugger
 	this.visible = true;	
 		if (this.visible) {
 			this.visible = false;
@@ -82,7 +78,6 @@ export class NotificationsComponent implements OnInit {
 	}
 		
 	notificationOpen(messageType: string, messageTille: string, message:string) {
-    debugger;
 		this.ngOnInit();
 		this.visible = false;
 		this.showNotification(messageType,  messageTille, message);
