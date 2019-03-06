@@ -4,6 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700');
 
 // VARIABLES MODO RESPONSIVE
+$break-extraSmall : 576px; //menor
+$break-small : 576px; //mayor all
+$break-medium : 768px;
+$break-large : 992px;
 $break-extraLarge : 1200px;
 
 html, body { height: 100%;}
@@ -39,6 +43,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #D4D
     right: 26%;
     width: 35%;
 	z-index: 9999999;
+	 // RESOLUCION PHONE > 576px
+	 @media screen and (max-width: $break-extraSmall) {
+		width: 50%;
+	}
 	
 	
 	.notification {
@@ -81,6 +89,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #D4D
 		.notification-title {
 			font-size: 1.1em;
 			font-weight: bold;
+
+			// RESOLUCION PHONE > 576px
+			@media screen and (max-width: $break-extraSmall) {
+				font-size: .8em;
+				font-weight: 500;
+			}
+
+		}
+
+		.notification-message {
+			// RESOLUCION PHONE > 576px
+			@media screen and (max-width: $break-extraSmall) {
+				font-size: .6rem;
+			}
+
 		}
 	}
 	
