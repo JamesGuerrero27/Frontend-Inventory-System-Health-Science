@@ -31,6 +31,7 @@ export class ProviderComponent implements OnInit {
     providerPhone2: new FormControl(''),
     providerEmail: new FormControl(''),
     providerContact: new FormControl('')
+
   });
   constructor(private _notification: NotificationsComponent, private _providerService: ProviderService) { }
 
