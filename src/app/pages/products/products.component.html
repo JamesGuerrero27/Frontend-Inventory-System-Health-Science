@@ -31,15 +31,14 @@
                         <input type="text" matInput placeholder="Nombre" name="productName" formControlName="productName" required>
                         <mat-icon matSuffix>shopping_basket</mat-icon>
                       </mat-form-field>
-  
+
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" formControlName="brand"  name="brand"  [formControl]="brandCtrl" required >
-                        <mat-icon matSuffix>featured_play_list</mat-icon>
-                        <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let brand of filteredBrand | async" [value]="brand.productBrandName">
-                            <span>{{brand.productBrandName}}</span> |
+                        <mat-select placeholder="Marca" formControlName="productBrandId"  name="brand">
+                          <mat-option *ngFor="let brand of _brand" [value]="brand.productBrandId">
+                            {{brand.productBrandName}}
                           </mat-option>
-                        </mat-autocomplete>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
@@ -52,28 +51,30 @@
                     <div class="container-input">
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input type="text" matInput placeholder="Proveedor"  name="providers" formControlName="providers" required >
-                        <mat-icon matSuffix>person</mat-icon>
+                        <mat-select placeholder="Proveedor" formControlName="providersId"  name="providers">
+                          <mat-option *ngFor="let provider of _providers" [value]="provider.providersId">
+                            {{provider.providerName}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" formControlName="storage" name="storage" required >
-                        <mat-icon matSuffix>account_balance_wallet</mat-icon>
-                        <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
-                            <span>{{state}}</span> |
+                        <mat-select placeholder="Bodega" formControlName="storageId"  name="storage" required>
+                          <mat-option *ngFor="let storage of _storage" [value]="storage.storageId">
+                            {{storage.storageDescription}}
                           </mat-option>
-                        </mat-autocomplete>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
                     
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" formControlName="typeProduct" name="typeProduct" required >
-                        <mat-icon matSuffix>chrome_reader_mode</mat-icon>
-                        <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
-                            <span>{{state}}</span> |
+                        <mat-select placeholder="Tipo de Producto" formControlName="typeProductId"  name="typeProduct" required>
+                          <mat-option *ngFor="let typeProduct of _typeProduct" [value]="typeProduct.typeProductId">
+                            {{typeProduct.typeProductName}}
                           </mat-option>
-                        </mat-autocomplete>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
@@ -118,13 +119,12 @@
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Marca" aria-label="Marca" [matAutocomplete]="auto" formControlName="brand"  [formControl]="brandCtrl" name="brand" required >
-                        <mat-icon matSuffix>featured_play_list</mat-icon>
-                        <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let brand of filteredBrand | async" [value]="brand.productBrandName">
-                            <span>{{brand.productBrandName}}</span> |
+                        <mat-select placeholder="Marca" formControlName="productBrandId"  name="brand">
+                          <mat-option *ngFor="let brand of _brand" [value]="brand.productBrandId">
+                            {{brand.productBrandName}}
                           </mat-option>
-                        </mat-autocomplete>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
@@ -137,28 +137,30 @@
                     <div class="container-input">
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input type="text" matInput placeholder="Proveedor"  name="providers" formControlName="providers" required >
-                        <mat-icon matSuffix>person</mat-icon>
+                        <mat-select placeholder="Proveedor" formControlName="providersId"  name="providers">
+                          <mat-option *ngFor="let provider of _providers" [value]="provider.providersId">
+                            {{provider.providerName}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Bodega" aria-label="Bodega" [matAutocomplete]="auto" formControlName="storage" name="storage" required >
-                        <mat-icon matSuffix>account_balance_wallet</mat-icon>
-                        <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
-                            <span>{{state}}</span> |
+                        <mat-select placeholder="Bodega" formControlName="storageId"  name="storage" required>
+                          <mat-option *ngFor="let storage of _storage" [value]="storage.storageId">
+                            {{storage.storageDescription}}
                           </mat-option>
-                        </mat-autocomplete>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
                     
                       <mat-form-field class="form-field-full-width mr-4">
-                        <input matInput placeholder="Tipo de Producto" aria-label="Tipo de Producto" [matAutocomplete]="auto" formControlName="typeProduct" name="typeProduct" required >
-                        <mat-icon matSuffix>chrome_reader_mode</mat-icon>
-                        <mat-autocomplete #auto="matAutocomplete">
-                          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
-                            <span>{{state}}</span> |
+                        <mat-select placeholder="Tipo de Producto" formControlName="typeProductId"  name="typeProduct" required>
+                          <mat-option *ngFor="let typeProduct of _typeProduct" [value]="typeProduct.typeProductId">
+                            {{typeProduct.typeProductName}}
                           </mat-option>
-                        </mat-autocomplete>
+                        </mat-select>
+                        <mat-icon matSuffix>featured_play_list</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
@@ -350,14 +352,3 @@
     <mat-icon>filter_list</mat-icon>
   </a>
 </div>
-
-<table>
-  <tr *ngFor='let data of _brand'>
-    <td>{{data.productBrandName}}</td>
-  </tr>
-</table>
-<!-- <table>
-  <tr *ngFor="let brand of filteredBrand">
-    <td>{{brand.productBrandName}}</td>
-  </tr>
-</table> -->

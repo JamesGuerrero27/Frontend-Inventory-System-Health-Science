@@ -27,24 +27,13 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['select','options', 'code', 'name', 'brand', 'type', 'cost', 'provider', 'storage'];
   public selection = new SelectionModel<Product>(true, []);
 
-  // Instancias para los autocompleados
-  filteredBrand: Observable<Brand[]>;
-  brandCtrl = new FormControl();
-
   //DECLARANDO E INICIALIZNDO OBJETO FILTERPRODUCT
   private dataProductFiltered:Product;
 
-  _brand: Brand[] = [
-  {
-    productBrandId: 1,
-    productBrandName: "Product1",
-    product2s: "string",
-  },
-  {
-    productBrandId: 2,
-    productBrandName: "Product2",
-    product2s: "string",
-  }];
+  _brand: Brand[];
+  _providers: Providers[];
+  _typeProduct: TypeProduct[];
+  _storage: _Storage[];
 
   private status: boolean = false;
   productForm:FormGroup;
@@ -53,52 +42,40 @@ export class ProductsComponent implements OnInit {
    constructor(private _notification:NotificationsComponent, private _productService:ProductService) {
     this.initFilteredProduct();
     this.initForm('');
-    // this.getBrands()
-    // .subscribe((data : Brand[]) => {
-    //   console.log('BRANDS SERVICE', data)
-    //   this.detectChangesComboBox(data);
-    //   console.log('this.filteredBrand SERVICE',this.filteredBrand);
 
-    //   this._brand = data; 
-    // }, error => console.log("error " + error));
-
-    this.filteredBrand = this.brandCtrl.valueChanges
-    .pipe(
-      startWith(''),
-      map(brand => brand ? this._filterComboBox(brand) : this._brand.slice())
-    );
-
-    console.log('BRANDS SERVICE', this.filteredBrand);
-
-    
+    console.log('BRANDS DATA', this._productService.getBrands());   
   }
 
 
   ngOnInit() {
-
+  this.getBrands();
   this.getProducts();
+  this.getTypeProduct();
+  this.getProviders();
+  this.getStorage();
   console.log('this._brand ngOnInit',this._brand); 
   }
 
   initForm( typeRequest:string): void {
+    debugger
     // Variables temp. || 
     let code = typeRequest == "edit" ? this.dataProductFiltered.productCode : '';
     let name = typeRequest == "edit" ? this.dataProductFiltered.productName: '';
-    let brand = typeRequest == "edit" ? this.dataProductFiltered.productBrand.productBrandName: '';
-    let typeProduct =  typeRequest == "edit" ? this.dataProductFiltered.typeProduct.typeProductName: '';
+    let brand = typeRequest == "edit" ? this.dataProductFiltered.productBrand.productBrandId: '';
+    let typeProduct =  typeRequest == "edit" ? this.dataProductFiltered.typeProduct.typeProductId: '';
     let cost =  typeRequest == "edit" ? this.dataProductFiltered.productCost: '';
-    let provider = typeRequest == "edit" ?  this.dataProductFiltered.providers.providerName: '';
-    let storage =  typeRequest == "edit" ? this.dataProductFiltered.storage.storageDescription: '';
+    let provider = typeRequest == "edit" ?  this.dataProductFiltered.providers.providersId: '';
+    let storage =  typeRequest == "edit" ? this.dataProductFiltered.storage.storageId: '';
     
     // Instanciando Formulario Reactivo
     this.productForm = new FormGroup({
       productCode: new FormControl(code, Validators.required),
       productName: new FormControl(name, Validators.required),
-      brand: new FormControl(brand, Validators.required),
-      typeProduct: new FormControl(typeProduct, Validators.required),
+      productBrandId: new FormControl(brand, Validators.required),
+      typeProductId: new FormControl(typeProduct, Validators.required),
       productCost: new FormControl(cost, Validators.required),
-      providers: new FormControl(provider, Validators.required),
-      storage: new FormControl(storage, Validators.required)
+      providersId: new FormControl(provider, Validators.required),
+      storageId: new FormControl(storage, Validators.required)
     });
   }
 
@@ -116,33 +93,46 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  getBrands():Observable<Brand[]>{
-    return this._productService.getBrands()
-  
-  }
-
-  detectChangesComboBox(data){
-    this.filteredBrand = this.brandCtrl.valueChanges
-    .pipe(
-      startWith(''),
-      map(brand => brand ? this._filterComboBox(brand) : data.slice())
-    );
-  }
-
-  private _filterComboBox(value: string): Brand[] {
-    const filterValue = value.toLowerCase();
-     console.log(filterValue)
-    return this._brand.filter(brand => brand.productBrandName.toLowerCase().indexOf(filterValue) === 0);
-  } 
-
-   getProducts() {
-    this._productService.getProducts()
+  getProducts() {
+  this._productService.getProducts()
     .subscribe((data : Product[]) => {
-       console.log('PRODUCT SERVICE', data);
-       this.dataSource = new MatTableDataSource<Product>(data);
-       return this._product = data;
+        console.log('PRODUCT SERVICE', data);
+        this.dataSource = new MatTableDataSource<Product>(data);
+        return this._product = data;
     });
-   }
+  }
+
+  getBrands(){
+    return this._productService.getBrands()
+    .subscribe((data : Brand[]) => {
+      console.log('BRAND SERVICE', data);
+      return this._brand = data;
+    });
+  }
+  
+  getTypeProduct(){
+    return this._productService.getTypeProduct()
+    .subscribe((data : TypeProduct[]) => {
+      console.log('ProductType SERVICE', data);
+      return this._typeProduct = data;
+    });
+  }
+
+  getProviders(){
+    return this._productService.getProviders()
+    .subscribe((data : Providers[]) => {
+      console.log('Providers SERVICE', data);
+      return this._providers = data;
+    });
+  }
+
+  getStorage(){
+    return this._productService.getStorages()
+    .subscribe((data : _Storage[]) => {
+      console.log('Storages SERVICE', data);
+      return this._storage = data;
+    });
+  }
 
    createUser():void{ 
     this.initForm('');
@@ -150,6 +140,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onCreateProduct() : void{
+    debugger
     this._newProduct = this.productForm.value;
     console.log("Imprimiendo DATA del FORM", this._newProduct);
     this._productService.createProduct(this._newProduct)
@@ -158,7 +149,7 @@ export class ProductsComponent implements OnInit {
         this.openTypeWindow('', '');
         this._notification.notificationOpen('success', 'success!', 'Producto creado con exito');
         this.getProducts();
-      }, error => console.log("error "+ error));
+      }, error => console.log("Upps => "+ error));
   }
 
   /** Si el número de elementos seleccionados coincide con el número total de filas. */
@@ -182,6 +173,7 @@ export class ProductsComponent implements OnInit {
     this.openWindowOf = type;
     let btnAdd = document.getElementById('add');
     let btnfilter = document.getElementById('filter');
+    let inputCode = document.getElementById('productCode');
 
     if (type=='create'){
        btnAdd.classList.add('active');
@@ -192,6 +184,7 @@ export class ProductsComponent implements OnInit {
       btnfilter.classList.add('active');  
     }else if (type=='edit') {
       this.addDataInputForm(code);
+      inputCode ? inputCode.focus() : null;
     }else{
       btnAdd.classList.remove('active');
       btnfilter.classList.remove('active');
