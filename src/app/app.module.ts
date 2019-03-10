@@ -19,6 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 import { RequisitionFormComponent } from './pages/requisition-form/requisition-form.component';
 import { NotificationsComponent } from './@theme/notifications/notifications.component';
 import { ProviderComponent } from './pages/provider/provider.component';
+import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ProviderComponent } from './pages/provider/provider.component';
     RequisitionFormComponent,
     NotificationsComponent,
     ProviderComponent,
+    AutoFocusDirective,
 
   ],
   imports: [

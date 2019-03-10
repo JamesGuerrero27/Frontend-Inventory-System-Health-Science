@@ -45,10 +45,10 @@ export class ProductService {
       "productCode": products.productCode,
       "productName": products.productName,
       "productCost": products.productCost,
-      "productBrandId": Number(products.productBrandId),
-      "providersId": Number(products.providersId),
-      "storageId": Number(products.storageId),
-      "typeProductId": Number(products.typeProductId)
+      "productBrand": Number(products.productBrand),
+      "providers": Number(products.providers),
+      "storage": Number(products.storage),
+      "typeProduct": Number(products.typeProduct)
     }
     console.log(JSON.stringify(data));
     return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, data, this._headers);
