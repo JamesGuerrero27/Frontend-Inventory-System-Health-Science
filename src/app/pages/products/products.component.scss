@@ -8,8 +8,27 @@ $break-extraLarge : 1200px;
 // VARIABLES DE COLORES
 $primary: #00CBFE;
 
+div.container-fluid {
+    div.container-header {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            position: relative;
+            width: 56.5vh;
+            top: -2vh;
+            left: -6vh;
+        }
+       
+    }
+}
+
 div.card-body {
     fieldset {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            position: relative;
+            width: 49vh;
+            top: 2vh;
+        }
         .mat-icon {
             color: #CECECE;
         }
@@ -31,6 +50,7 @@ div.card-body {
             // RESOLUCION PHONE > 576px
             @media screen and (max-width: $break-extraSmall){
                 font-size: .6rem;
+                text-align: center;
             }
 
             span {
@@ -103,12 +123,12 @@ div.card-body {
         // RESOLUCION PHONE > 576px
         @media screen and (max-width: $break-extraSmall) {
             display: flex;
-            width: 58vh;
-            left: -8vh;
+            width: 57vh;
+            left: -5vh;
             overflow: scroll;
             position: relative;
             margin: 2%;
-            background: #FAFAFA;
+            //background: #FAFAFA;
             padding-top: 8%;
             border: none;
         }
@@ -126,6 +146,7 @@ div.card-body {
     // RESOLUCION PHONE > 576px
     @media screen and (max-width: $break-extraSmall){
         padding-bottom: 0;
+        height: 3vh;
     }
 }
 
@@ -146,11 +167,3 @@ div.card-body {
     }  
     
 }
-
-
-
-
-
-
-  
-

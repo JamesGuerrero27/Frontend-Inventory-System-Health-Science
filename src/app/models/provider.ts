@@ -1,8 +1,10 @@
 export class Provider {
-    providerName: String;
-    providerRtn: Number;
-    providerPhone1: Number;
-    providerPhone2: Number;
-    providerEmail: String;
-    providerContact: String;
+    providersId: number;
+    providerName: string;
+    providerRtn: string;
+    providerPhone1: string;
+    providerPhone2: string;
+    providerAddress: string;
+    providerEmail: string;
+    providerContact: string;
 }

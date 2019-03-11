@@ -8,8 +8,27 @@ $break-extraLarge : 1200px;
 // VARIABLES DE COLORES
 $primary: #00CBFE;
 
+div.container-fluid {
+    div.container-header {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            position: relative;
+            width: 55.5vh;
+            top: -2vh;
+            left: -5.5vh;
+        }
+       
+    }
+}
+
 div.card-body {
     fieldset {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            position: relative;
+            width: 49vh;
+            top: 2vh;
+        }
         .mat-icon {
             color: #CECECE;
         }
@@ -31,6 +50,7 @@ div.card-body {
             // RESOLUCION PHONE > 576px
             @media screen and (max-width: $break-extraSmall){
                 font-size: .6rem;
+                text-align: center;
             }
 
             span {
@@ -57,9 +77,31 @@ div.card-body {
 
                     mat-form-field.form-field-full-width {
                         width: 100%;  
+                        mat-hint.none {
+                            // RESOLUCION PHONE > 576px
+                            @media screen and (max-width: $break-extraSmall){
+                                display: none;
+                            }
+                        }
                     }   
                 } 
                 
+                div.container-button {
+                    width: 50%;
+                    button {
+                        width: 25%;
+                        // RESOLUCION PHONE > 576px
+                        @media screen and (max-width: $break-extraSmall){
+                            width: 100%;
+                        }
+                    }
+
+                    // RESOLUCION PHONE > 576px
+                    @media screen and (max-width: $break-extraSmall){
+                        width: 100%;
+                    }
+
+                }
                 // RESOLUCION PHONE > 576px
                 @media screen and (max-width: $break-extraSmall){
                     padding: 5%;
@@ -80,16 +122,22 @@ div.card-body {
 
         // RESOLUCION PHONE > 576px
         @media screen and (max-width: $break-extraSmall) {
-            width: 137%;
-            left: -20%;
+            display: flex;
+            width: 56.5vh;
+            left: -5vh;
             overflow: scroll;
+            position: relative;
+            margin: 2%;
+            //background: #FAFAFA;
+            padding-top: 8%;
+            border: none;
         }
 
         table {
             width: 100%;
             // RESOLUCION PHONE > 576px
             @media screen and (max-width: $break-extraSmall) {
-                width: 40rem;
+                width: 200vh;
             }
             
         }
@@ -98,6 +146,7 @@ div.card-body {
     // RESOLUCION PHONE > 576px
     @media screen and (max-width: $break-extraSmall){
         padding-bottom: 0;
+        height: 3vh;
     }
 }
 
@@ -118,11 +167,3 @@ div.card-body {
     }  
     
 }
-
-
-
-
-
-
-  
-
