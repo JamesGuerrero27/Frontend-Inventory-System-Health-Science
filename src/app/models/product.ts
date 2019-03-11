@@ -8,6 +8,7 @@ export class Product {
     productCost: number;
     providers: Providers;
     storage: _Storage;
+    quantity: number;
 }
 
 export class  Brand {

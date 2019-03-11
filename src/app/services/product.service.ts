@@ -51,8 +51,13 @@ export class ProductService {
   }
 
   // EDITAR PRODUCTOS
-  updateProduct(idProduct:string){
-    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, idProduct , this._headers)
+  updateProduct(idProduct:number, products:Product){
+    debugger
+    products.productId = idProduct;
+
+    console.log("UpdateProduct", JSON.stringify(products));
+    
+    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products + "/" + idProduct,  JSON.stringify(products), this._headers)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -60,8 +65,12 @@ export class ProductService {
   }
 
    // ELIMINAR PRODUCTOS
-  deleteProduct(idProduct:string){
-    return this._http.delete(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products + idProduct , this._headers);
+  deleteProduct(idProduct:number){
+    return this._http.delete(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products + "/" + idProduct , this._headers)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
 

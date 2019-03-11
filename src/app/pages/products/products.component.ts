@@ -19,12 +19,15 @@ export class ProductsComponent implements OnInit {
   public openWindowOf: string;
   public isActive: string;
   public _product:Array<Product>;
+
+  private __idProduct: number;
   
   private _newProduct: Product;
+  private _updateProduct: Product;
 
   // Trabajando con tablas
   public dataSource:any = [];
-  displayedColumns: string[] = ['select','options', 'code', 'name', 'brand', 'type', 'cost', 'provider', 'storage'];
+  displayedColumns: string[] = ['select','options', 'code', 'name', 'quantity', 'cost', 'brand', 'type', 'provider', 'storage'];
   public selection = new SelectionModel<Product>(true, []);
 
   //DECLARANDO E INICIALIZNDO OBJETO FILTERPRODUCT
@@ -57,7 +60,6 @@ export class ProductsComponent implements OnInit {
   }
 
   initForm( typeRequest:string): void {
-    debugger
     // Variables temp. || 
     let code = typeRequest == "edit" ? this.dataProductFiltered.productCode : '';
     let name = typeRequest == "edit" ? this.dataProductFiltered.productName: '';
@@ -66,6 +68,7 @@ export class ProductsComponent implements OnInit {
     let cost =  typeRequest == "edit" ? this.dataProductFiltered.productCost: '';
     let provider = typeRequest == "edit" ?  this.dataProductFiltered.providers.providersId: '';
     let storage =  typeRequest == "edit" ? this.dataProductFiltered.storage.storageId: '';
+    let quantity = typeRequest == "edit" ? this.dataProductFiltered.quantity: '';
     
     // Instanciando Formulario Reactivo
     this.productForm = new FormGroup({
@@ -75,7 +78,8 @@ export class ProductsComponent implements OnInit {
       typeProductId: new FormControl(typeProduct, Validators.required),
       productCost: new FormControl(cost, Validators.required),
       providersId: new FormControl(provider, Validators.required),
-      storageId: new FormControl(storage, Validators.required)
+      storageId: new FormControl(storage, Validators.required),
+      quantity: new FormControl (quantity, Validators.required )
     });
   }
 
@@ -90,6 +94,7 @@ export class ProductsComponent implements OnInit {
       productCost: 0,
       providers: new Providers,
       storage: new _Storage,
+      quantity: 0
     }
   }
 
@@ -134,13 +139,12 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-   createUser():void{ 
+  createUser():void{ 
     this.initForm('');
     this._newProduct = new Product;
   }
 
   onCreateProduct() : void{
-    debugger
     this._newProduct = this.productForm.value;
     console.log("Imprimiendo DATA del FORM", this._newProduct);
     this._productService.createProduct(this._newProduct)
@@ -148,6 +152,29 @@ export class ProductsComponent implements OnInit {
         console.log('Suucess Create Product');
         this.openTypeWindow('', '');
         this._notification.notificationOpen('success', 'success!', 'Producto creado con exito');
+        this.getProducts();
+      }, error => console.log("Upps => "+ error));
+  }
+
+  onEditProduct() : void{
+    this._updateProduct = this.productForm.value;
+    console.log("Print data form by UpdateProduct", this._updateProduct);
+    this._productService.updateProduct(this.__idProduct, this._updateProduct)
+      .subscribe((data : Product ) =>{
+        console.log('Success Update Product');
+        this.openTypeWindow('', '');
+        this._notification.notificationOpen('success', 'success!', 'Producto Modificado con exito');
+        this.getProducts();
+      }, error => console.log("Upps => "+ error));
+  }
+
+  onDeleteProduct(code:number) : void{
+    this.__idProduct = code;
+    this._productService.deleteProduct(this.__idProduct)
+      .subscribe((data : Product ) =>{
+        console.log('Success Delete Product');
+        this.openTypeWindow('', '');
+        this._notification.notificationOpen('success', 'success!', 'Producto ha sido eliminado con exito!!!');
         this.getProducts();
       }, error => console.log("Upps => "+ error));
   }
@@ -169,7 +196,6 @@ export class ProductsComponent implements OnInit {
 
 
   openTypeWindow (type: string, code:string): void {
-    debugger
     this.openWindowOf = type;
     let btnAdd = document.getElementById('add');
     let btnfilter = document.getElementById('filter');
@@ -209,6 +235,7 @@ export class ProductsComponent implements OnInit {
 
   addDataInputForm(code) {
         console.log(code);
+        this.__idProduct = code;
         this.dataProductFiltered = this._product.filter(p => p.productId == code)[0];
         console.log(this.dataProductFiltered);
         this.initForm('edit');
