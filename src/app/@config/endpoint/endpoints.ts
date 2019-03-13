@@ -8,11 +8,11 @@ export class IntegrationURIS {
 		this.baseUrl = 'https://sistema20190205065709.azurewebsites.net/api';
 		this.integrationUris = {
 			'base': this.baseUrl,
-			'products': '/Product2',
+			'products': '/Products',
 			'typeProducts': '/TypeProducts',
 			'productBrands': '/ProductBrands',
-            'productStorages': '/Storages',
-            'providers': '/Providers',
+			'productStorages': '/Storages',
+			'providers': '/Providers',
 		}
 	}
 }
