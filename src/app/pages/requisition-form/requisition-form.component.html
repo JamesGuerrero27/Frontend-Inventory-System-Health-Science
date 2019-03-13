@@ -1,4 +1,4 @@
-<div class="contaiiner">
+<div class="container-fluid">
     <div class="card m-4">
 
         <div class="card-header d-flex justify-content-start">
@@ -8,10 +8,10 @@
         <div class="card-body">
             <!-- Inicio de los inputs -->
             <form>
-                <div class="row">
+                <div class="row ml-4">
 
                       <mat-form-field class="example-full-width mr-4">
-                        <input matInput placeholder="Numero de Requisicion" value="">
+                        <input matInput placeholder="Número de Requisición" value="">
                     </mat-form-field>
 
 
@@ -31,40 +31,45 @@
                     <form [formGroup]="firstFormGroup">
                         <ng-template matStepLabel>Informacion General</ng-template>
                         <div class="d-flex">
-                            <mat-form-field class="mr-2 w-100">
+                            <mat-form-field class="mr-2 w-25">
                                 <input matInput placeholder="Asignatura" formControlName="firstCtrl">
                             </mat-form-field>
-                            <mat-form-field class="mr-2 w-100">
+                            <mat-form-field class="mr-2 w-25">
                                 <input matInput placeholder="Practica" formControlName="firstCtrl" required>
                             </mat-form-field>
-                            <mat-form-field class="mr-2 w-100">
+                            <mat-form-field class="mr-2 w-25">
                                 <input matInput placeholder="Docente" formControlName="firstCtrl" required>
                             </mat-form-field>
-                            <mat-form-field class="mr-2 w-100">
+                            <mat-form-field class="mr-2 w-25">
                                 <input matInput placeholder="Seccion" formControlName="firstCtrl" required>
                             </mat-form-field>
 
                         </div>
-                        <div class="d-flex">
-                            <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Hora de clase" formControlName="firstCtrl" required>
+                        <div class="d-flex align-items-center">
+                            <mat-form-field class="mr-2 w-25">
+                                <input type="time" matInput placeholder="Hora de clase" formControlName="firstCtrl" required>
                             </mat-form-field>
-                            <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Fecha a realizarse" formControlName="firstCtrl" required>
+
+                            <mat-form-field class="mr-2 w-25">
+                                <input matInput [matDatepicker]="picker" placeholder="Fecha a realizarse" formControlName="firstCtrl" required>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
-                            <div class="d-flex justify-content-start w-100">
+
+                            <div class="d-flex justify-content-start w-50">
                                 <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
                                 <span class="mr-2">Estado</span>
                             </div>
                         </div>
                     </form>
                 </mat-step>
+
                 <mat-step [stepControl]="secondFormGroup">
                     <form [formGroup]="secondFormGroup">
                         <ng-template matStepLabel>Solicitud de Insumos</ng-template>
                         <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Cantidad" formControlName="secondCtrl" required>
+                                <input type="number" matInput placeholder="Cantidad" formControlName="secondCtrl" required>
                             </mat-form-field>
 
                             <mat-form-field class="mr-4 w-100">
@@ -75,7 +80,10 @@
                                 <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
                             </mat-form-field>
 
-                            <mat-icon matSuffix class="size-3 mr-2 input-add">add_circle</mat-icon>
+                            
+                            <button mat-icon-button color="primary">
+                                <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
+                            </button>
 
                         </div>
                     </form>
@@ -86,7 +94,7 @@
                         <ng-template matStepLabel>Informacion de Equipos</ng-template>
                         <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Cantidad" required>
+                                <input type="number" matInput placeholder="Cantidad" required>
                             </mat-form-field>
 
                             <mat-form-field class="mr-2 w-100">
@@ -96,16 +104,19 @@
                             <mat-form-field class="mr-2 w-100">
                                 <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
                             </mat-form-field>
-                            <mat-icon matSuffix class="size-3 mr-2 input-add">add_circle</mat-icon>
+                            <button mat-icon-button color="primary">
+                                <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
+                            </button>
                         </div>
                     </form>
                 </mat-step>
+
                 <mat-step [stepControl]="secondFormGroup">
                     <form [formGroup]="secondFormGroup">
                         <ng-template matStepLabel>Otros Articulos</ng-template>
                         <div class="d-flex">
                             <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Cantidad" required>
+                                <input type="number" matInput placeholder="Cantidad" required>
                             </mat-form-field>
 
                             <mat-form-field class="mr-2 w-100">
@@ -115,16 +126,18 @@
                             <mat-form-field class="mr-2 w-100">
                                 <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
                             </mat-form-field>
-                            <mat-icon matSuffix class="size-3 mr-2 input-add">add_circle</mat-icon>
+                            <button mat-icon-button color="primary">
+                                <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
+                            </button>
                         </div>
                     </form>
-                    <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button (click)="stepper.reset()">Reset</button>
-                    </div>
                 </mat-step>
             </mat-vertical-stepper>
+
             <!-- Fin del acordion -->
+            <div class="m-4">
+                <button mat-button (click)="stepper.reset()">Resetear Campos</button>
+            </div>
 
             <div class="mb-3">
                 <fieldset class="card">

@@ -5,7 +5,7 @@ import { Product, Brand, TypeProduct, Providers, _Storage } from 'src/app/models
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {map, startWith, debounceTime} from 'rxjs/operators';
-import { NotificationsComponent } from 'src/app/@theme/notifications/notifications.component'
+import { NotificationsComponent } from 'src/app/@theme/notifications/notifications.component';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({

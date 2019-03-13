@@ -12,7 +12,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule,
   MatIconModule, MatListModule, MatCardModule,
   MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule,
-  MatCheckboxModule, MatAutocompleteModule, MatStepperModule } from '@angular/material';
+  MatCheckboxModule, MatAutocompleteModule, MatStepperModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
@@ -20,6 +20,7 @@ import { RequisitionFormComponent } from './pages/requisition-form/requisition-f
 import { NotificationsComponent } from './@theme/notifications/notifications.component';
 import { ProviderComponent } from './pages/provider/provider.component';
 import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
+import { DialogsComponent } from './@theme/dialogs/dialogs.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
     NotificationsComponent,
     ProviderComponent,
     AutoFocusDirective,
+    DialogsComponent,
 
   ],
   imports: [
@@ -54,7 +56,9 @@ import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
     MatTableModule,
     MatCheckboxModule,
     MatAutocompleteModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent]
 })

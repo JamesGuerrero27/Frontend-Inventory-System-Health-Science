@@ -24,22 +24,24 @@
   
                       <mat-form-field class="form-field-full-width mr-4">
                         <input type="text" matInput placeholder="Nombre" name="providerName" formControlName="providerName" required id="providerName" appAutoFocus>
-                        <mat-icon matSuffix>shopping_basket</mat-icon>
+                        <mat-icon matSuffix>short_text</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
                         <input type="text" matInput placeholder="RTN" name="providerRtn" formControlName="providerRtn" required>
-                        <mat-icon matSuffix>looks_one</mat-icon>
+                        <mat-icon matSuffix>short_text</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
-                          <input matInput placeholder="Teléfono 1" type="text" name="providerPhone1" formControlName="providerPhone1" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <span matPrefix>+504 &nbsp;</span>
+                          <input matInput placeholder="Teléfono 1" type="tel" name="providerPhone1" formControlName="providerPhone1" required>
+                          <mat-icon matSuffix>phone</mat-icon>
                       </mat-form-field>
 
                       <mat-form-field class="form-field-full-width mr-4">
+                          <span matPrefix>+504 &nbsp;</span>
                           <input matInput placeholder="Teléfono 2" type="text" name="providerPhone2" formControlName="providerPhone2" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <mat-icon matSuffix>phone</mat-icon>
                       </mat-form-field>
   
                     </div>
@@ -47,24 +49,24 @@
                     <div class="container-input">
 
                       <mat-form-field class="form-field-full-width mr-4">
-                          <input matInput placeholder="Dirección" type="text" name="providerAddress" formControlName="providerAddress" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <textarea matInput placeholder="Dirección"  name="providerAddress" formControlName="providerAddress" required> </textarea>
+                          <mat-icon matSuffix>notes</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
                           <input matInput placeholder="Correo Electrónico" type="email" name="providerEmail" formControlName="providerEmail" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <mat-icon matSuffix>alternate_email</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                          <input matInput placeholder="Contacto" type="text" name="providerContact" formControlName="providerContact" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <input matInput placeholder="Nombre de Contacto" type="text" name="providerContact" formControlName="providerContact" required>
+                          <mat-icon matSuffix>contacts</mat-icon>
                       </mat-form-field>        
   
                     </div>
 
                     <div class="container-button">
-                        <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!providerForm.valid">Crear Proveedor</button>
+                        <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!providerForm.valid">Guardar Cambios</button>
                     </div>
 
                   </form>
@@ -88,23 +90,25 @@
                     <div class="container-input">
 
                         <mat-form-field class="form-field-full-width mr-4">
-                          <input type="text" matInput placeholder="Nombre" name="providerName" id="providerName" formControlName="providerName" required appAutoFocus>
-                          <mat-icon matSuffix>shopping_basket</mat-icon>
+                          <input type="text" matInput placeholder="Nombre" name="providerName" formControlName="providerName" required id="providerName" appAutoFocus>
+                          <mat-icon matSuffix>short_text</mat-icon>
                         </mat-form-field>
   
                         <mat-form-field class="form-field-full-width mr-4">
                           <input type="text" matInput placeholder="RTN" name="providerRtn" formControlName="providerRtn" required>
-                          <mat-icon matSuffix>looks_one</mat-icon>
+                          <mat-icon matSuffix>short_text</mat-icon>
                         </mat-form-field>
   
                         <mat-form-field class="form-field-full-width mr-4">
-                            <input matInput placeholder="Teléfono 1" type="text" name="providerPhone1" formControlName="providerPhone1" required>
-                            <mat-icon matSuffix>attach_money</mat-icon>
+                            <span matPrefix>+504 &nbsp;</span>
+                            <input matInput placeholder="Teléfono 1" type="tel" name="providerPhone1" formControlName="providerPhone1" required>
+                            <mat-icon matSuffix>phone</mat-icon>
                         </mat-form-field>
   
                         <mat-form-field class="form-field-full-width mr-4">
+                            <span matPrefix>+504 &nbsp;</span>
                             <input matInput placeholder="Teléfono 2" type="text" name="providerPhone2" formControlName="providerPhone2" required>
-                            <mat-icon matSuffix>attach_money</mat-icon>
+                            <mat-icon matSuffix>phone</mat-icon>
                         </mat-form-field>
     
                     </div>
@@ -112,24 +116,24 @@
                     <div class="container-input">
 
                       <mat-form-field class="form-field-full-width mr-4">
-                          <input matInput placeholder="Dirección 2" type="text" name="providerAddress" formControlName="providerAddress" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <textarea matInput placeholder="Dirección"  name="providerAddress" formControlName="providerAddress" required></textarea>
+                          <mat-icon matSuffix>notes</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
                           <input matInput placeholder="Correo Electrónico" type="email" name="providerEmail" formControlName="providerEmail" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <mat-icon matSuffix>alternate_email</mat-icon>
                       </mat-form-field>
   
                       <mat-form-field class="form-field-full-width mr-4">
-                          <input matInput placeholder="Contacto" type="text" name="providerContact" formControlName="providerContact" required>
-                          <mat-icon matSuffix>attach_money</mat-icon>
+                          <input matInput placeholder="Nombre de Contacto" type="text" name="providerContact" formControlName="providerContact" required>
+                          <mat-icon matSuffix>contacts</mat-icon>
                       </mat-form-field>        
   
                     </div>
 
                     <div class="container-button">
-                        <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!providerForm.valid">Editar Proveedor</button>
+                        <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!providerForm.valid">Guardar Cambios</button>
                     </div>
 
                   </form>
