@@ -17,6 +17,11 @@ div.container-fluid {
             top: -2vh;
             left: -5.5vh;
         }
+
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px){
+            width: 100%;
+        }
        
     }
 }
@@ -28,6 +33,11 @@ div.card-body {
             position: relative;
             width: 49vh;
             top: 2vh;
+        }
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px) {
+            width: 77vh;
+            left: -6vh;
         }
         .mat-icon {
             color: #CECECE;
@@ -132,14 +142,20 @@ div.card-body {
             padding-top: 8%;
             border: none;
         }
-
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px) {
+            width: 73vh;
+        }
         table {
             width: 100%;
             // RESOLUCION PHONE > 576px
             @media screen and (max-width: $break-extraSmall) {
                 width: 200vh;
             }
-            
+            // RESOLUCION PHONE > 576px
+            @media screen and (max-width: 300px) {
+                width: 300vh;
+            }
         }
     }
 

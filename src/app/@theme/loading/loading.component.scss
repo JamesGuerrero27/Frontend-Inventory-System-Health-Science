@@ -37,6 +37,10 @@ $break-extraLarge : 1200px;
   position: relative;
   top: 30em;
   background: transparent;
+    // RESOLUCION PHONE > 576px
+    @media screen and (max-width: $break-extraSmall){
+      top: 20em;
+    }
 }
 
 

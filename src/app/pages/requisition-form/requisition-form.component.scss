@@ -1,3 +1,10 @@
+// VARIABLES MODO RESPONSIVE
+$break-extraSmall : 576px; //menor
+$break-small : 576px; //mayor all
+$break-medium : 768px;
+$break-large : 992px;
+$break-extraLarge : 1200px;
+
 div {
     mat-step-header {
         div.mat-step-icon-state-number{
@@ -8,7 +15,31 @@ div {
 
 div.card-body {
     form {
-        margin-left: 0;
+        div.row {
+            // RESOLUCION PHONE > 576px
+            @media screen and (max-width: $break-extraSmall){
+            display: flex;
+            justify-content: center;
+            margin-left: 0 !important;
+            }
+            mat-form-field.mat-form-field {
+                // RESOLUCION PHONE > 576px
+                @media screen and (max-width: $break-extraSmall){
+                    margin-right: 0 !important;
+                    width: 88%;
+                }
+            }
+        }
+    }
+
+    mat-vertical-stepper.mat-stepper-vertical {
+
+         // RESOLUCION PHONE > 576px
+         @media screen and (max-width: $break-extraSmall){
+            width: 44.5vh;
+            position: relative;
+            left: -8%;
+        }
     }
 }
 
@@ -27,4 +58,16 @@ div.card-body {
 
 .input-state{
     color: #00CBFE;
+}
+div {
+    // RESOLUCION PHONE > 576px
+    @media screen and (max-width: $break-extraSmall){
+        display: block !important;
+    }
+    mat-form-field.mat-form-field {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            width: 100% !important;
+        }
+    }
 }
