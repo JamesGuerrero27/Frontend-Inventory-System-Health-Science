@@ -13,6 +13,7 @@ export class IntegrationURIS {
 			'productBrands': '/ProductBrands',
 			'productStorages': '/Storages',
 			'providers': '/Providers',
+			'warehouseMaintenance': '/Storages',
 		}
 	}
 }
