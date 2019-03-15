@@ -77,24 +77,24 @@ export class BrandMaintenanceComponent implements OnInit {
    this._newBrand = new BrandMaintenance;
  }
 
- onCreateStorage(): void {
+ onCreateBrand(): void {
    this._newBrand = this.brandForm.value;
    console.log('Imprimiendo DATA del FORM', this._newBrand);
    this._brandService.createBrand(this._newBrand)
      .subscribe((data: BrandMaintenance ) => {
-       console.log('Suceess WareHouse');
+       console.log('Suceess Brand');
        this.openTypeWindow('', '');
        this._notification.notificationOpen('success', 'success!', 'Brand creado con exito');
        this.getBrand();
      }, error => console.log('error ' + error));
  }
 
- onEditStorage(): void{
+ onEditBrand(): void{
    this._updateBrand = this.brandForm.value;
    console.log('Print data form by UpdateBrand', this._updateBrand);
    this._brandService.updateBrand(this._idBrand, this._updateBrand)
      .subscribe((data: BrandMaintenance ) => {
-       console.log('Success Update Warehouse');
+       console.log('Success Update Brand');
        this.openTypeWindow('', '');
        this._notification.notificationOpen('success', 'success!', 'Brand Modificado con exito');
        this.getBrand();
@@ -142,12 +142,12 @@ export class BrandMaintenanceComponent implements OnInit {
 
  saveItem(){
    this.openTypeWindow('', '');
-   this._notification.notificationOpen('success', 'success!', 'La bodega se ha almacenado con exito');
+   this._notification.notificationOpen('success', 'success!', 'La marca se ha almacenado con exito');
  }
 
  editItem(){
    this.openTypeWindow('', '');
-   this._notification.notificationOpen('success', 'success!', 'La bodega se ha editado con exito');
+   this._notification.notificationOpen('success', 'success!', 'La marca se ha editado con exito');
  }
 
  onSubmit() {
