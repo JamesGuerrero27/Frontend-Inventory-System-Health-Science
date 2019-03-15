@@ -43,6 +43,9 @@
           <a mat-list-item (click)="redirectToPage('warehouseMaintenance')">
             <mat-icon>assignment</mat-icon>Mantenimiento de bodega
           </a>
+          <a mat-list-item (click)="redirectToPage('brandMaintenance')">
+            <mat-icon>assignment</mat-icon>Mantenimiento de marca
+          </a>
           <a mat-list-item (click)="redirectToPage('requisition')">
             <mat-icon>assignment</mat-icon>Requisicion
           </a>
@@ -112,5 +115,9 @@
      <!-- Inicio de la vista mantenimiento de bodega -->
     <app-warehouse-maintenance *ngIf="showPage && page=='warehouseMaintenance'"></app-warehouse-maintenance>
      <!-- Fin de la vista mantenimiento de bodega -->
+     
+<!-- Inicio de la vista mantenimiento de bodega -->
+    <app-brand-maintenance *ngIf="showPage && page=='brandMaintenance'"></app-brand-maintenance>
+    <!-- Fin de la vista mantenimiento de bodega -->
   </mat-sidenav-content>
 </mat-sidenav-container>

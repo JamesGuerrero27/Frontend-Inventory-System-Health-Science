@@ -22,6 +22,7 @@ import { ProviderComponent } from './pages/provider/provider.component';
 import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
 import { DialogsComponent } from './@theme/dialogs/dialogs.component';
 import { WarehouseMaintenanceComponent } from './pages/warehouse-maintenance/warehouse-maintenance.component';
+import { BrandMaintenanceComponent } from './pages/brand-maintenance/brand-maintenance.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { WarehouseMaintenanceComponent } from './pages/warehouse-maintenance/war
     AutoFocusDirective,
     DialogsComponent,
     WarehouseMaintenanceComponent,
+    BrandMaintenanceComponent,
 
   ],
   imports: [
