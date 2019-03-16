@@ -4,8 +4,7 @@ import { Product, Brand } from '../models/product';
 import { contentHeaders } from '../@config/header/header';
 import { IntegrationURIS } from '../@config/endpoint/endpoints';
 import { Observable, throwError } from 'rxjs';
-import { tap, retry, catchError } from 'rxjs/operators';
-import { error } from '@angular/compiler/src/util';
+import { retry, catchError } from 'rxjs/operators';
 
 
 @Injectable({

@@ -1,3 +1,8 @@
+
+<!--INICIO ETIQUETA PARA MOSTRAR LAS NOTIFICACIONES -->
+<div id="notification-container"></div>
+<!--FIN ETIQUETA PARA MOSTRAR LAS NOTIFICACIONES -->
+
 <div class="container-fluid">
     <div class="card m-4">
 
@@ -7,17 +12,17 @@
         </div>
         <div class="card-body">
             <!-- Inicio de los inputs -->
-            <form [formGroup]="requisitionFormGroup" (ngSubmit)="saveData();">
+            <form [formGroup]="requisitionFormGroup" (ngSubmit)="onCreateRequisition(); stepper.reset();">
                 <div class="row ml-4">
 
                     <mat-form-field class="mr-4">
-                        <input matInput placeholder="Número de Requisición" formControlName="requisitionNumber" readonly>
+                        <input matInput placeholder="Número de Requisición" formControlName="requisitionId" readonly type="number">
                         <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                     </mat-form-field>
 
 
                     <mat-form-field class="mr-4">
-                        <input matInput placeholder="Fecha de Requisicion" formControlName="requisitionDate" readonly>
+                        <input matInput placeholder="Fecha de Requisicion" formControlName="requistionDate" readonly>
                         <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                     </mat-form-field>
                 </div>
@@ -30,72 +35,82 @@
                     <mat-step [stepControl]="requisitionFormGroup">
                             <ng-template matStepLabel>Informacion General</ng-template>
                             <div class="d-flex">
+
                                 <mat-form-field class="mr-2 w-25">
-                                    <input matInput placeholder="Asignatura" formControlName="Assignature">
+                                    <input matInput placeholder="Asignatura" formControlName="class">
                                     <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                                 </mat-form-field>
+
                                 <mat-form-field class="mr-2 w-25">
-                                    <input matInput placeholder="Practica" formControlName="PracticType">
+                                    <input matInput placeholder="Nombre de la Práctica" formControlName="reqPracticeName">
                                     <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                                 </mat-form-field>
+
                                 <mat-form-field class="mr-2 w-25">
-                                    <input matInput placeholder="Docente" formControlName="teacherName">
+                                    <input matInput placeholder="Sección" formControlName="section">
                                     <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                                 </mat-form-field>
+
                                 <mat-form-field class="mr-2 w-25">
-                                    <input matInput placeholder="Seccion" formControlName="secction">
+                                    <mat-select placeholder="Bodega" formControlName="storageId"  name="storage">
+                                        <mat-option *ngFor="let storage of _storage" [value]="storage.storageId">
+                                        {{storage.storageDescription}}
+                                        </mat-option>
+                                    </mat-select>
                                     <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                                 </mat-form-field>
 
                             </div>
                             <div class="d-flex align-items-center">
                                 <mat-form-field class="mr-2 w-25">
-                                    <input type="time" matInput placeholder="Hora de clase" formControlName="classTime">
+                                    <input type="time" matInput placeholder="Hora de clase" formControlName="classHour">
                                     <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                                 </mat-form-field>
 
                                 <mat-form-field class="mr-2 w-25">
-                                    <input matInput [matDatepicker]="picker" placeholder="Fecha a realizarse" formControlName="DateToBePerformed">
+                                    <input matInput [matDatepicker]="picker" placeholder="Fecha a realizarse" formControlName="practiceDate">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
 
                                 <div class="d-flex justify-content-start w-50">
                                     <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
-                                    <span class="mr-2">Estado</span>
+                                    <span class="mr-2">Estado de la Fecha</span>
                                 </div>
                             </div>
                     </mat-step>
 
-                        <mat-step [stepControl]="productFormGroup">
+                        <mat-step [stepControl]="requisitionFormGroup">
                                 <ng-template matStepLabel>Solicitud de Productos</ng-template>
                                 <div>
-                                    <form formGroupName="productFormGroup" class="d-flex">
-                                        
-                                        <mat-form-field class="mr-2 w-100">
-                                            <input type="number" matInput placeholder="Cantidad" formControlName="quantity">
-                                            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
-                                        </mat-form-field>
+                                    <div formArrayName="requisitionDetails" *ngFor="let product of requisitionFormGroup.get('requisitionDetails').controls; let i = index">
+                                        <div [formGroupName]="i" class="d-flex">
+                                            <div class="m-3">#{{i+1}}</div>
+                                            <mat-form-field class="mr-2 w-100">
+                                                <input type="number" matInput placeholder="Cantidad" formControlName="Quantity">
+                                                <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                            </mat-form-field>
 
-                                        <mat-form-field class="mr-4 w-100">
-                                            <mat-select placeholder="Producto" formControlName="description"  name="description">
-                                                <mat-option *ngFor="let product of _product" [value]="product.productId">
-                                                {{product.productName}}
-                                                </mat-option>
-                                            </mat-select>
-                                            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
-                                        </mat-form-field>
+                                            <mat-form-field class="mr-4 w-100">
+                                                <mat-select placeholder="Producto" formControlName="ProductId"  name="description">
+                                                    <mat-option *ngFor="let product of _product" [value]="product.productId">
+                                                    {{product.productName}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                            </mat-form-field>
 
-                                        <mat-form-field class="mr-4 w-100">
-                                            <input matInput placeholder="Observacion" formControlName="observation">
-                                            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
-                                        </mat-form-field>
+                                            <mat-form-field class="mr-4 w-100">
+                                                <input matInput placeholder="Observacion" formControlName="observation">
+                                                <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                            </mat-form-field>
 
-                                        
-                                        <button mat-icon-button color="primary">
-                                            <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
-                                        </button>
-                                    </form>
+                                            
+                                            <button mat-icon-button color="primary">
+                                                <mat-icon aria-label="icon-button with a heart icon" (click)="addNewLineProduct()">add_circle</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                         </mat-step>
 
@@ -104,8 +119,8 @@
 
             <!-- Fin del acordion -->
             <div class="m-4 d-flex  text-center">
-                <button mat-button (click)="stepper.reset(); initDataFormRequisition();">Resetear Campos</button>
-                <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!requisitionFormGroup.valid">Guardar Cambios</button>
+                <button mat-button (click)="stepper.reset(); initDataFormRequisition();" class="mr-4">Resetear Campos</button>
+                <button mat-flat-button class="my-bg-primary text-white ml-4" type="submit" [disabled]="!requisitionFormGroup.valid">Guardar Cambios</button>
             </div>
         </form>
             <div class="mb-3">
