@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-requisition-form',
@@ -18,31 +20,50 @@ export class RequisitionFormComponent implements OnInit {
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
 
-  constructor(private _formBuilder: FormBuilder) {
+  _product:Array<Product>;
+
+  constructor(private _formBuilder: FormBuilder, private _productService:ProductService) {
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+       this.initDataFormRequisition(); 
+       this.getProducts();
+  }
+
+  initDataFormRequisition () {
+    // GENERAR FECHA AUTOMATICA
+    let d = new Date();
+    let date = d.getDate() + "/" + (d.getMonth() +1) + "/" + d.getFullYear();
 
     this.requisitionFormGroup = this._formBuilder.group({
-      requisitionNumber: ['', Validators.required],
-      requisitionDate: ['', Validators.required],
+      requisitionNumber: ['1', Validators.required],
+      requisitionDate: [date, Validators.required],
       Assignature: ['', Validators.required],
       PracticType: ['', Validators.required],
       teacherName: ['', Validators.required],
       secction: ['', Validators.required],
       classTime: ['', Validators.required],
       DateToBePerformed: ['', Validators.required],
+      productFormGroup: this._formBuilder.group({
+        quantity: ['', Validators.required],
+        description: ['', Validators.required],
+        observation: ['', Validators.required]
+      })
     });
-
-    
-
   }
+
+  getProducts() {
+    this._productService.getProducts()
+      .subscribe((data : Product[]) => {
+          console.log('PRODUCT SERVICE', data);
+          return this._product = data;
+      });
+    }
+
+  saveData(): void {
+    var data:any = this.requisitionFormGroup.value;
+    console.log(data)
   }
+}
 
 
