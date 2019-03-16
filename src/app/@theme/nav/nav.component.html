@@ -40,6 +40,12 @@
           <a mat-list-item routerLinkActive="active" class="main-list" (click)="redirectToPage('home')">
             <mat-icon>dashboard</mat-icon>DashBoard
           </a>
+          <a mat-list-item (click)="redirectToPage('warehouseMaintenance')">
+            <mat-icon>directions_bus</mat-icon>Mantenimiento de bodega
+          </a>
+          <a mat-list-item (click)="redirectToPage('brandMaintenance')">
+            <mat-icon>local_offer</mat-icon>Mantenimiento de marca
+          </a>
           <a mat-list-item (click)="redirectToPage('requisition')">
             <mat-icon>assignment</mat-icon>Requisicion
           </a>
@@ -104,7 +110,14 @@
 
     <!-- Inicio de Proveedores -->
     <app-provider *ngIf="showPage && page=='provider'"></app-provider>
-    <!-- Fin de la vista de Proveedores -->
+     <!-- Fin de la vista de Proveedores -->
 
+     <!-- Inicio de la vista mantenimiento de bodega -->
+    <app-warehouse-maintenance *ngIf="showPage && page=='warehouseMaintenance'"></app-warehouse-maintenance>
+     <!-- Fin de la vista mantenimiento de bodega -->
+     
+<!-- Inicio de la vista mantenimiento de bodega -->
+    <app-brand-maintenance *ngIf="showPage && page=='brandMaintenance'"></app-brand-maintenance>
+    <!-- Fin de la vista mantenimiento de bodega -->
   </mat-sidenav-content>
 </mat-sidenav-container>

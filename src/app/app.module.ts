@@ -21,6 +21,8 @@ import { NotificationsComponent } from './@theme/notifications/notifications.com
 import { ProviderComponent } from './pages/provider/provider.component';
 import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
 import { DialogsComponent } from './@theme/dialogs/dialogs.component';
+import { WarehouseMaintenanceComponent } from './pages/warehouse-maintenance/warehouse-maintenance.component';
+import { BrandMaintenanceComponent } from './pages/brand-maintenance/brand-maintenance.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { DialogsComponent } from './@theme/dialogs/dialogs.component';
     ProviderComponent,
     AutoFocusDirective,
     DialogsComponent,
+    WarehouseMaintenanceComponent,
+    BrandMaintenanceComponent,
 
   ],
   imports: [

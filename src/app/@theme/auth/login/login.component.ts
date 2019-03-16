@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
 private _dataUsers:any;
   login() {
-    debugger
     this._dataUsers = this.loginForm.value;
 
     let user = "admin";
