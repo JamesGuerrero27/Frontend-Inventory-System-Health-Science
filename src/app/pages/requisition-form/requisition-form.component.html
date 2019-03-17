@@ -7,139 +7,107 @@
         </div>
         <div class="card-body">
             <!-- Inicio de los inputs -->
-            <form>
+            <form [formGroup]="requisitionFormGroup" (ngSubmit)="saveData();">
                 <div class="row ml-4">
 
-                      <mat-form-field class="example-full-width mr-4">
-                        <input matInput placeholder="Número de Requisición" value="">
+                    <mat-form-field class="mr-4">
+                        <input matInput placeholder="Número de Requisición" formControlName="requisitionNumber" readonly>
+                        <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                     </mat-form-field>
 
 
-
-                    <mat-form-field class="example-full-width mr-4">
-                        <input matInput placeholder="Fecha de Requisicion" value="">
+                    <mat-form-field class="mr-4">
+                        <input matInput placeholder="Fecha de Requisicion" formControlName="requisitionDate" readonly>
+                        <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                     </mat-form-field>
                 </div>
-            </form>
             <!-- Fin de los inputs -->
             <!-- Inicio del acordion -->
-            <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear" hidden>
-                {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-            </button>
-            <mat-vertical-stepper [linear]="isLinear" #stepper>
-                <mat-step [stepControl]="firstFormGroup">
-                    <form [formGroup]="firstFormGroup">
-                        <ng-template matStepLabel>Informacion General</ng-template>
-                        <div class="d-flex">
-                            <mat-form-field class="mr-2 w-25">
-                                <input matInput placeholder="Asignatura" formControlName="firstCtrl">
-                            </mat-form-field>
-                            <mat-form-field class="mr-2 w-25">
-                                <input matInput placeholder="Practica" formControlName="firstCtrl" required>
-                            </mat-form-field>
-                            <mat-form-field class="mr-2 w-25">
-                                <input matInput placeholder="Docente" formControlName="firstCtrl" required>
-                            </mat-form-field>
-                            <mat-form-field class="mr-2 w-25">
-                                <input matInput placeholder="Seccion" formControlName="firstCtrl" required>
-                            </mat-form-field>
+                <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear" hidden>
+                    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                </button>
+                <mat-vertical-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="requisitionFormGroup">
+                            <ng-template matStepLabel>Informacion General</ng-template>
+                            <div class="d-flex">
+                                <mat-form-field class="mr-2 w-25">
+                                    <input matInput placeholder="Asignatura" formControlName="Assignature">
+                                    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                </mat-form-field>
+                                <mat-form-field class="mr-2 w-25">
+                                    <input matInput placeholder="Practica" formControlName="PracticType">
+                                    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                </mat-form-field>
+                                <mat-form-field class="mr-2 w-25">
+                                    <input matInput placeholder="Docente" formControlName="teacherName">
+                                    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                </mat-form-field>
+                                <mat-form-field class="mr-2 w-25">
+                                    <input matInput placeholder="Seccion" formControlName="secction">
+                                    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                </mat-form-field>
 
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <mat-form-field class="mr-2 w-25">
-                                <input type="time" matInput placeholder="Hora de clase" formControlName="firstCtrl" required>
-                            </mat-form-field>
-
-                            <mat-form-field class="mr-2 w-25">
-                                <input matInput [matDatepicker]="picker" placeholder="Fecha a realizarse" formControlName="firstCtrl" required>
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field>
-
-                            <div class="d-flex justify-content-start w-50">
-                                <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
-                                <span class="mr-2">Estado</span>
                             </div>
-                        </div>
-                    </form>
-                </mat-step>
+                            <div class="d-flex align-items-center">
+                                <mat-form-field class="mr-2 w-25">
+                                    <input type="time" matInput placeholder="Hora de clase" formControlName="classTime">
+                                    <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                </mat-form-field>
 
-                <mat-step [stepControl]="secondFormGroup">
-                    <form [formGroup]="secondFormGroup">
-                        <ng-template matStepLabel>Solicitud de Insumos</ng-template>
-                        <div class="d-flex">
-                            <mat-form-field class="mr-2 w-100">
-                                <input type="number" matInput placeholder="Cantidad" formControlName="secondCtrl" required>
-                            </mat-form-field>
+                                <mat-form-field class="mr-2 w-25">
+                                    <input matInput [matDatepicker]="picker" placeholder="Fecha a realizarse" formControlName="DateToBePerformed">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
 
-                            <mat-form-field class="mr-4 w-100">
-                                <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
-                            </mat-form-field>
+                                <div class="d-flex justify-content-start w-50">
+                                    <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
+                                    <span class="mr-2">Estado</span>
+                                </div>
+                            </div>
+                    </mat-step>
 
-                            <mat-form-field class="mr-4 w-100">
-                                <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
-                            </mat-form-field>
+                        <mat-step [stepControl]="productFormGroup">
+                                <ng-template matStepLabel>Solicitud de Productos</ng-template>
+                                <div>
+                                    <form formGroupName="productFormGroup" class="d-flex">
+                                        
+                                        <mat-form-field class="mr-2 w-100">
+                                            <input type="number" matInput placeholder="Cantidad" formControlName="quantity">
+                                            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                        </mat-form-field>
 
-                            
-                            <button mat-icon-button color="primary">
-                                <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
-                            </button>
+                                        <mat-form-field class="mr-4 w-100">
+                                            <mat-select placeholder="Producto" formControlName="description"  name="description">
+                                                <mat-option *ngFor="let product of _product" [value]="product.productId">
+                                                {{product.productName}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                        </mat-form-field>
 
-                        </div>
-                    </form>
-                </mat-step>
-                
-                <mat-step [stepControl]="secondFormGroup">
-                    <form [formGroup]="secondFormGroup">
-                        <ng-template matStepLabel>Informacion de Equipos</ng-template>
-                        <div class="d-flex">
-                            <mat-form-field class="mr-2 w-100">
-                                <input type="number" matInput placeholder="Cantidad" required>
-                            </mat-form-field>
+                                        <mat-form-field class="mr-4 w-100">
+                                            <input matInput placeholder="Observacion" formControlName="observation">
+                                            <mat-icon matSuffix>chrome_reader_mode</mat-icon>
+                                        </mat-form-field>
 
-                            <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
-                            </mat-form-field>
+                                        
+                                        <button mat-icon-button color="primary">
+                                            <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
+                                        </button>
+                                    </form>
+                                </div>
+                        </mat-step>
 
-                            <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
-                            </mat-form-field>
-                            <button mat-icon-button color="primary">
-                                <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
-                            </button>
-                        </div>
-                    </form>
-                </mat-step>
-
-                <mat-step [stepControl]="secondFormGroup">
-                    <form [formGroup]="secondFormGroup">
-                        <ng-template matStepLabel>Otros Articulos</ng-template>
-                        <div class="d-flex">
-                            <mat-form-field class="mr-2 w-100">
-                                <input type="number" matInput placeholder="Cantidad" required>
-                            </mat-form-field>
-
-                            <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Descripcion" formControlName="secondCtrl" required>
-                            </mat-form-field>
-
-                            <mat-form-field class="mr-2 w-100">
-                                <input matInput placeholder="Observacion" formControlName="secondCtrl" required>
-                            </mat-form-field>
-                            <button mat-icon-button color="primary">
-                                <mat-icon aria-label="icon-button with a heart icon">add_circle</mat-icon>
-                            </button>
-                        </div>
-                    </form>
-                </mat-step>
-            </mat-vertical-stepper>
+                </mat-vertical-stepper>
+           
 
             <!-- Fin del acordion -->
             <div class="m-4 d-flex  text-center">
-                <button mat-button (click)="stepper.reset()">Resetear Campos</button>
-                <button mat-button (click)="stepper.reset()" class="btn btn-primary">Guardar Cambios</button>
+                <button mat-button (click)="stepper.reset(); initDataFormRequisition();">Resetear Campos</button>
+                <button mat-flat-button class="my-bg-primary text-white" type="submit" [disabled]="!requisitionFormGroup.valid">Guardar Cambios</button>
             </div>
-
+        </form>
             <div class="mb-3">
                 <fieldset class="card">
                     <div>
