@@ -15,11 +15,11 @@ export class WarehouseMaintenanceService {
   constructor(public _http: HttpClient) { }
 
   getStorage(): Observable<WarehouseMaintenance[]> {
-    return this._http.get<WarehouseMaintenance[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.warehouseMaintenance, this._headers);
+    return this._http.get<WarehouseMaintenance[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productStorages, this._headers);
   }
   createStorage(Storage: WarehouseMaintenance) {
     console.log(JSON.stringify(Storage));
-    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.warehouseMaintenance, JSON.stringify(Storage), this._headers, )
+    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productStorages, JSON.stringify(Storage), this._headers, )
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -29,7 +29,7 @@ export class WarehouseMaintenanceService {
   updateStorage(storageId: number, Storage: WarehouseMaintenance) {
     Storage.storageId = storageId;
     console.log('UpdateStorage', JSON.stringify(Storage));
-    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.warehouseMaintenance + '/' + storageId,  JSON.stringify(Storage), this._headers)
+    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productStorages + '/' + storageId,  JSON.stringify(Storage), this._headers)
     .pipe(
       retry(1),
       catchError(this.handleError)

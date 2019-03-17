@@ -13,8 +13,6 @@ this.integrationUris = {
 'productBrands': '/ProductBrands',
 'productStorages': '/Storages',
 'providers': '/Providers',
-'warehouseMaintenance': '/Storages',
-'brandMaintenance': '/ProductBrands',
 		}
 	}
 }
