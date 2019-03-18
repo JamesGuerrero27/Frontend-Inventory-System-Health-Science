@@ -35,7 +35,7 @@ import { BrandMaintenanceComponent } from './pages/brand-maintenance/brand-maint
     AutoFocusDirective,
     DialogsComponent,
     WarehouseMaintenanceComponent,
-    BrandMaintenanceComponent,
+    BrandMaintenanceComponent
 
   ],
   imports: [

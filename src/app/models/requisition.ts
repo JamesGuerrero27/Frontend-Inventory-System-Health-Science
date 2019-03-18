@@ -4,16 +4,16 @@ export class Requisition {
     reqPracticeName: string;
     section: string;
     storageId: number;
-    classHour: string;
+    classHour: Date;
     practiceDate: string;
-    requistionDate: string;
+    requistionDate:Date;
     statusRequisitionDate: string;
     requisitionStatusId: number;
     requisitionDetails: Array<RequisitionDetails>;
 }
 
 export class RequisitionDetails {
-    ProductId: number;
-    Quantity: number;
+    productId: number;
+    quantity: number;
     observation: string;
 }
