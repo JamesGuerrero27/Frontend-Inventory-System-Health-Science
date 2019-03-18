@@ -15,25 +15,25 @@ export class BrandMaintenanceService {
   constructor(public _http: HttpClient) { }
 
   getBrand(): Observable<BrandMaintenance[]> {
-    return this._http.get<BrandMaintenance[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.brandMaintenance, this._headers);
+    return this._http.get<BrandMaintenance[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productBrands, this._headers);
   }
   createBrand(Brand: BrandMaintenance) {
     console.log(JSON.stringify(Brand));
-    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.brandMaintenance, JSON.stringify(Brand), this._headers, )
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
+    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productBrands, JSON.stringify(Brand), this._headers)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
   // Actualizar bodega
   updateBrand(productBrandId: number, Brand: BrandMaintenance) {
     Brand.productBrandId = productBrandId;
-    console.log('UpdateStorage', JSON.stringify(Brand));
-    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.brandMaintenance + '/' + productBrandId,  JSON.stringify(Brand), this._headers)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    );
+    console.log('UpdateBrand', JSON.stringify(Brand));
+    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productBrands + '/' + productBrandId, JSON.stringify(Brand), this._headers)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
   }
   handleError(error) {
     let errorMessage = '';
