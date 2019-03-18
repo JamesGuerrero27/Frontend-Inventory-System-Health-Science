@@ -6,6 +6,8 @@ import { Requisition } from 'src/app/models/requisition';
 import { RequisitionService } from 'src/app/services/requisition.service';
 import { NotificationsComponent } from 'src/app/@theme/notifications/notifications.component';
 
+import * as moment from 'moment'; 
+
 //  MIGRACION
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material';
@@ -122,7 +124,7 @@ export class RequisitionFormComponent implements OnInit {
       let strM:string;
 
       hours < 10 ?  strH = '0' + hours: strH = hours.toString();
-      minutes < 10 ? strM = '0' + minutes: minutes.toString();
+      minutes < 10 ? strM = '0' + minutes: strM = minutes.toString();
       dateParsed = strH + ":" + strM;
       console.log(dateParsed)
     }
@@ -281,6 +283,7 @@ export class RequisitionFormComponent implements OnInit {
     requisitionTime: '',
     practiceDate: ''
   };
+  statusRequisitionMessage: string;
   verificationRequisitionTime(requisitionTime: any, practiceDate: any) {
     debugger
     this.containerTimeVerification = {
@@ -289,10 +292,38 @@ export class RequisitionFormComponent implements OnInit {
     }
 
     if (this.containerTimeVerification.requisitionTime.length > 0 && this.containerTimeVerification.practiceDate!='') {
-      let dateNow = this.generateDateNow();
-      let practiceDate = this.parsedDateTime(this.containerTimeVerification.practiceDate, 'date');
-      let requisitionTime = this.containerTimeVerification.requisitionTime;
+      let dNow = new Date();
+      console.log(dNow)
+      let dateNow = this.parsedDateTime(dNow, 'date'); 
+      let TimeNow = this.parsedDateTime(dNow, 'time'); 
+      let dateTimeNow = dateNow + " " + TimeNow + ':00';
 
+      let practiceDate = this.parsedDateTime(this.containerTimeVerification.practiceDate, 'date');
+      let requisitionTime = this.containerTimeVerification.requisitionTime + ':00';
+      
+      let practiceDateTime  = practiceDate + " " + requisitionTime;
+      
+      console.log("dateTimeNow", dateTimeNow);
+      console.log("practiceDateTime",practiceDateTime);
+      var dNowRequisition = moment(dateTimeNow, "YYYY-MM-DD HH:mm:ss");
+      var dPracticeRequisition = moment(practiceDateTime, "YYYY-MM-DD HH:mm:ss");
+
+      var diffDaysPractice = dPracticeRequisition.diff(dNowRequisition, 'd'); // Diff in days
+      console.log("Dias",diffDaysPractice);
+
+      var diffHoursPractice = dPracticeRequisition.diff(dNowRequisition, 'h'); // Diff in hours
+      console.log("Horas",diffHoursPractice);
+      
+      if (diffHoursPractice > 72) {
+       console.log("Alert Green");
+       this.statusRequisitionMessage = "";
+      } else if (diffHoursPractice > 48) {
+        this.statusRequisitionMessage = "El tiempo de solicitud esta por debajo de las 72 hrs. ";
+       console.log("Alert Yellow") 
+      } else if (diffHoursPractice < 48) {
+       console.log("Alert Red")
+       this.statusRequisitionMessage = "Imposible registrar esta solicitud, se requieren 72 horas de anticipación";
+      }
       console.log("dateNow",dateNow, "practiceDate", practiceDate, "requisitionTime", requisitionTime);
     }
 

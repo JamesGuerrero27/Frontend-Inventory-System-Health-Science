@@ -78,6 +78,7 @@
                                 <div class="d-flex justify-content-start w-50">
                                     <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
                                     <span class="mr-2">Estado de la Fecha</span>
+                                    <span class="text-danger">{{statusRequisitionMessage}}</span>
                                 </div>
                             </div>
                     </mat-step>
@@ -204,6 +205,7 @@
                                 <div class="d-flex justify-content-start w-50">
                                     <mat-icon matSuffix class="size-3 mr-2 input-state">brightness_1</mat-icon>
                                     <span class="mr-2">Estado de la Fecha</span>
+                                    <span class="text-danger">{{statusRequisitionMessage}}</span>
                                 </div>
                             </div>
                     </mat-step>
@@ -218,7 +220,7 @@
                                                 <input type="number" matInput placeholder="Cantidad" formControlName="Quantity" [value]="productArray.quantity">
                                                 <mat-icon matSuffix>chrome_reader_mode</mat-icon>
                                             </mat-form-field>
-<div>{{productArray.productId}}</div>
+
                                             <mat-form-field class="mr-4 w-100">
                                                 <mat-select placeholder="Producto" formControlName="ProductId"  name="description">
                                                     <mat-option *ngFor="let product of _product" [value]="product.productId" >
