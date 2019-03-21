@@ -272,3 +272,16 @@ div.card-body {
         height: 3vh;
     }
 }
+
+fieldset {
+    margin-top: 3%;
+    border: solid 1px #eee;
+    border-radius: 15px;
+    padding: 2%;
+
+    legend {
+        font-size: .9rem;
+        font-weight: 500;
+        width: 30%;
+    }
+}
