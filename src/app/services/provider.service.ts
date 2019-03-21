@@ -1,4 +1,4 @@
-import { Provider } from './../models/provider';
+import { Provider, Cities } from './../models/provider';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { contentHeaders } from '../@config/header/header';
@@ -16,6 +16,10 @@ export class ProviderService {
 
   getProvider(): Observable<Provider[]> {
     return this._http.get<Provider[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.providers, this._headers);
+  }
+
+  getCities(): Observable<Cities[]> {
+    return this._http.get<Cities[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.cities, this._headers);
   }
 
   // CREAR NUEVO PROVEEDOR
