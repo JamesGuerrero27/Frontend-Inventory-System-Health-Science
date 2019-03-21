@@ -7,4 +7,12 @@ export class Provider {
     providerAddress: string;
     providerEmail: string;
     providerContact: string;
+    contactPosition: string;
+    city: Cities;
 }
+
+export class Cities {
+    cityId: number;
+    cityName: string;
+}
+
