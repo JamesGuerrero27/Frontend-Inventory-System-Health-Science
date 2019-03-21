@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // IMPORT PARA ANGULAR MATERIAL
 import { MatToolbarModule, MatButtonModule, MatSidenavModule,
@@ -62,7 +63,8 @@ import { BrandMaintenanceComponent } from './pages/brand-maintenance/brand-maint
     MatAutocompleteModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgbModule
   ],
   bootstrap: [AppComponent]
 })
