@@ -26,7 +26,7 @@ export class RequisitionFormComponent implements OnInit {
   requisitionFormGroup: FormGroup;
   Contador: number;
   requisitionArr: [];
-  hiddenTabled: boolean;
+  hiddenTabled: boolean = false;
 
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
@@ -62,9 +62,7 @@ export class RequisitionFormComponent implements OnInit {
     private _formBuilder: FormBuilder, 
     private _productService:ProductService, 
     private _requisitionService: RequisitionService
-  ) {
-    this.hiddenTabled = false;
-  }
+  ) {}
 
   ngOnInit() {
        this.initDataFormRequisition(''); 
@@ -239,7 +237,13 @@ export class RequisitionFormComponent implements OnInit {
 
   openTypeWindow (type: string, code:string): void {
     this.openWindowOf = type;
-    this.openWindowOf == "edit" || "create" || "view" ? this.hiddenTabled = true : this.hiddenTabled = false;
+    // this.openWindowOf == "edit" || "create" || "view" ? this.hiddenTabled = true : this.hiddenTabled = false;
+    if (this.openWindowOf == "edit" || this.openWindowOf == "create" || this.openWindowOf == "view") {
+      this.hiddenTabled = true
+    } else {
+      this.hiddenTabled = false;
+    }
+    console.log(this.hiddenTabled)
     let btnAdd = document.getElementById('add');
     let btnfilter = document.getElementById('filter');
     let inputCode = document.getElementById('class');
