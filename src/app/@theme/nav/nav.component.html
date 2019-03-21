@@ -8,7 +8,7 @@
         <div class="container-all">
           <div class="container-logo">
             <div>
-              <img src="../../../assets/img/logoNegativo.png" alt="Logo"><span>Enfermeria Auxiliar</span>
+              <img src="../../../assets/img/logoNegativo.png" alt="Logo"><span>Ciencias de la salud</span>
             </div>
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
               *ngIf="isHandset$ | async">
@@ -24,8 +24,8 @@
     <div class="navbar-scroll-container">
       <div class="container-title">
         <div class="container-user">
-          <h1 class="title-user">Jesus Sarmiento</h1>
-          <h1 class="email-user">jesus.sarmiento@gmail.com</h1>
+          <h1 class="title-user">Administrador</h1>
+          <h1 class="email-user">Admin.admin@unitec.com</h1>
         </div>
         <div class="container-avatar-user">
           <mat-icon matSuffix class="s-logoUser_nav">account_circle</mat-icon>
@@ -49,15 +49,21 @@
           <a mat-list-item (click)="redirectToPage('provider')">
             <mat-icon>person</mat-icon>Proveedores
           </a>
-          <a mat-list-item routerLink=".">
-            <mat-icon>meeting_room</mat-icon>Bodega
-          </a>
-          <a mat-list-item routerLink=".">
-            <mat-icon>book</mat-icon>Inventario
-          </a>
           <a mat-list-item routerLink="/" >
             <mat-icon>exit_to_app</mat-icon>Logout
           </a>
+        </div>
+        <div class="title-list-item">
+          <a class="text-muted">MANTENIMIENTOS</a>
+        </div>
+        <div class="container-item">
+          <a mat-list-item (click)="redirectToPage('warehouseMaintenance')">
+            <mat-icon>directions_bus</mat-icon>Mantenimiento de bodega
+          </a>
+          <a mat-list-item (click)="redirectToPage('brandMaintenance')">
+            <mat-icon>local_offer</mat-icon>Mantenimiento de marca
+          </a>
+
         </div>
       </mat-nav-list>
 
@@ -110,7 +116,14 @@
 
     <!-- Inicio de Proveedores -->
     <app-provider *ngIf="showPage && page=='provider'"></app-provider>
-    <!-- Fin de la vista de Proveedores -->
+     <!-- Fin de la vista de Proveedores -->
 
+     <!-- Inicio de la vista mantenimiento de bodega -->
+    <app-warehouse-maintenance *ngIf="showPage && page=='warehouseMaintenance'"></app-warehouse-maintenance>
+     <!-- Fin de la vista mantenimiento de bodega -->
+     
+<!-- Inicio de la vista mantenimiento de bodega -->
+    <app-brand-maintenance *ngIf="showPage && page=='brandMaintenance'"></app-brand-maintenance>
+    <!-- Fin de la vista mantenimiento de bodega -->
   </mat-sidenav-content>
 </mat-sidenav-container>

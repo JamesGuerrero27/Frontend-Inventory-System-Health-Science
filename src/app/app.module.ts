@@ -12,13 +12,17 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule,
   MatIconModule, MatListModule, MatCardModule,
   MatFormFieldModule, MatInputModule, MatSelectModule, MatProgressSpinnerModule,
-  MatCheckboxModule, MatAutocompleteModule, MatStepperModule } from '@angular/material';
+  MatCheckboxModule, MatAutocompleteModule, MatStepperModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import { RequisitionFormComponent } from './pages/requisition-form/requisition-form.component';
 import { NotificationsComponent } from './@theme/notifications/notifications.component';
 import { ProviderComponent } from './pages/provider/provider.component';
+import { AutoFocusDirective } from './@theme/directives/auto-focus.directive';
+import { DialogsComponent } from './@theme/dialogs/dialogs.component';
+import { WarehouseMaintenanceComponent } from './pages/warehouse-maintenance/warehouse-maintenance.component';
+import { BrandMaintenanceComponent } from './pages/brand-maintenance/brand-maintenance.component';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { ProviderComponent } from './pages/provider/provider.component';
     RequisitionFormComponent,
     NotificationsComponent,
     ProviderComponent,
+    AutoFocusDirective,
+    DialogsComponent,
+    WarehouseMaintenanceComponent,
+    BrandMaintenanceComponent
 
   ],
   imports: [
@@ -52,7 +60,9 @@ import { ProviderComponent } from './pages/provider/provider.component';
     MatTableModule,
     MatCheckboxModule,
     MatAutocompleteModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent]
 })

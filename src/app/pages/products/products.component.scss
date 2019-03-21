@@ -8,8 +8,37 @@ $break-extraLarge : 1200px;
 // VARIABLES DE COLORES
 $primary: #00CBFE;
 
+div.container-fluid {
+    div.container-header {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            position: relative;
+            width: 56.5vh;
+            top: -2vh;
+            left: -6vh;
+        }
+
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px){
+            width: 100%;
+        }
+       
+    }
+}
+
 div.card-body {
     fieldset {
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: $break-extraSmall){
+            position: relative;
+            width: 49vh;
+            top: 2vh;
+        }
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px) {
+            width: 77vh;
+            left: -6vh;
+        }
         .mat-icon {
             color: #CECECE;
         }
@@ -31,6 +60,7 @@ div.card-body {
             // RESOLUCION PHONE > 576px
             @media screen and (max-width: $break-extraSmall){
                 font-size: .6rem;
+                text-align: center;
             }
 
             span {
@@ -57,9 +87,31 @@ div.card-body {
 
                     mat-form-field.form-field-full-width {
                         width: 100%;  
+                        mat-hint.none {
+                            // RESOLUCION PHONE > 576px
+                            @media screen and (max-width: $break-extraSmall){
+                                display: none;
+                            }
+                        }
                     }   
                 } 
                 
+                div.container-button {
+                    width: 50%;
+                    button {
+                        width: 25%;
+                        // RESOLUCION PHONE > 576px
+                        @media screen and (max-width: $break-extraSmall){
+                            width: 100%;
+                        }
+                    }
+
+                    // RESOLUCION PHONE > 576px
+                    @media screen and (max-width: $break-extraSmall){
+                        width: 100%;
+                    }
+
+                }
                 // RESOLUCION PHONE > 576px
                 @media screen and (max-width: $break-extraSmall){
                     padding: 5%;
@@ -80,24 +132,37 @@ div.card-body {
 
         // RESOLUCION PHONE > 576px
         @media screen and (max-width: $break-extraSmall) {
-            width: 137%;
-            left: -20%;
+            display: flex;
+            width: 57vh;
+            left: -5vh;
             overflow: scroll;
+            position: relative;
+            margin: 2%;
+            //background: #FAFAFA;
+            padding-top: 8%;
+            border: none;
         }
-
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px) {
+            width: 73vh;
+        }
         table {
             width: 100%;
             // RESOLUCION PHONE > 576px
             @media screen and (max-width: $break-extraSmall) {
-                width: 40rem;
+                width: 200vh;
             }
-            
+            // RESOLUCION PHONE > 576px
+            @media screen and (max-width: 300px) {
+                width: 300vh;
+            }
         }
     }
 
     // RESOLUCION PHONE > 576px
     @media screen and (max-width: $break-extraSmall){
         padding-bottom: 0;
+        height: 3vh;
     }
 }
 
@@ -118,11 +183,3 @@ div.card-body {
     }  
     
 }
-
-
-
-
-
-
-  
-

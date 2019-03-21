@@ -1,18 +1,20 @@
 /* BASE ROUTES */
 export class IntegrationURIS {
 
-	public baseUrl: string;
-	public integrationUris: any;
+public baseUrl: string;
+public integrationUris: any;
 
-	constructor() {
-		this.baseUrl = 'https://sistema20190205065709.azurewebsites.net/api';
-		this.integrationUris = {
-			'base': this.baseUrl,
-			'products': '/Product2',
-			'typeProducts': '/TypeProducts',
-			'productBrands': '/ProductBrands',
-            'productStorages': '/Storages',
-            'providers': '/Providers',
+constructor() {
+this.baseUrl = 'https://sistema20190205065709.azurewebsites.net/api';
+this.integrationUris = {
+'base': this.baseUrl,
+'products': '/Products',
+'typeProducts': '/TypeProducts',
+'productBrands': '/ProductBrands',
+'productStorages': '/Storages',
+'providers': '/Providers',
+'requisition': '/Requisitions',
+'cities': '/Cities'
 		}
 	}
 }

@@ -45,7 +45,9 @@ sans-serif;
     display: none;
   }
 
-  div {
+  div.container-logo {
+    position: relative;
+    top: 25%;
     figure.logo {
       margin: 10%;
     }

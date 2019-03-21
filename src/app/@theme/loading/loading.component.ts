@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-loading',
@@ -10,9 +11,16 @@ export class LoadingComponent implements OnInit {
   color = 'white';
   mode = 'indeterminate';
   value = 50;
-  constructor() { }
+  statustime: boolean = false;
+  constructor( private _router: Router) { 
+  }
 
   ngOnInit() {
+
+  }
+
+  gotoHome() {
+    this._router.navigate(['/home']);
   }
 
 }

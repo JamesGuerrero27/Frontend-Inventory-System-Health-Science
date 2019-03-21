@@ -8,128 +8,21 @@ $break-extraLarge : 1200px;
 // VARIABLES DE COLORES
 $primary: #00CBFE;
 
-div {
-    mat-step-header {
-        div.mat-step-icon-state-number{
-            background-color: #48C0FD !important;
-        }
-    } 
-}
-
-div.card-body {
-    form {
-        div.row {
-            // RESOLUCION PHONE > 576px
-            @media screen and (max-width: $break-extraSmall){
-            display: flex;
-            justify-content: center;
-            margin-left: 0 !important;
-            }
-            mat-form-field.mat-form-field {
-                // RESOLUCION PHONE > 576px
-                @media screen and (max-width: $break-extraSmall){
-                    margin-right: 0 !important;
-                    width: 88%;
-                }
-            }
-        }
-    }
-
-    mat-vertical-stepper.mat-stepper-vertical {
-
-         // RESOLUCION PHONE > 576px
-         @media screen and (max-width: $break-extraSmall){
-            width: 44.5vh;
-            position: relative;
-            left: -8%;
-        }
-    }
-}
-
-.input-add{
-    color: #00CBFE;
-    &:hover{
-        color: #00CBFE;
-        cursor: pointer;
-        -moz-transform: scale(1.1);
-        -webkit-transform: scale(1.1);
-        -o-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        transform: scale(1.1)
-    }
-}
-
-.input-state{
-    color: #00CBFE;
-}
-div {
-    // RESOLUCION PHONE > 576px
-    @media screen and (max-width: $break-extraSmall){
-        display: block !important;
-    }
-    mat-form-field.mat-form-field {
+div.container-fluid {
+    div.container-header {
         // RESOLUCION PHONE > 576px
         @media screen and (max-width: $break-extraSmall){
-            width: 100% !important;
+            position: relative;
+            width: 55.5vh;
+            top: -2vh;
+            left: -5.5vh;
         }
-    }
-}
 
-.mat-icon {
-    color: #CECECE;
-    font-size: 20px;
-}
-
-div {
-    button.mat-icon-button {
-    width: 50px;
-    height: 50px;
-        span.mat-button-wrapper {
-            display: flex;
-            justify-content: center;
-            width: 87%;
-            mat-icon.mat-icon {
-                color: #00CBFE;
-                font-size: 2rem;
-            }
+        // RESOLUCION PHONE > 576px
+        @media screen and (max-width: 300px){
+            width: 100%;
         }
-    }
-}
-
-.button-options {
-    // width: 5%;
-    right: 3.5%;
-    position: fixed;
-    bottom: 3%;
-    :first-child {
-    display: block;
-    margin-bottom: 20%;
-    }
-    a.active {
-        background-color: $primary;
-    }     
-}
-
-
-
-// MIGRACION
-div{
-    div.container-fluid-tabled {
-        div.container-header {
-            // RESOLUCION PHONE > 576px
-            @media screen and (max-width: $break-extraSmall){
-                position: relative;
-                width: 55.5vh;
-                top: -2vh;
-                left: -5.5vh;
-            }
-
-            // RESOLUCION PHONE > 576px
-            @media screen and (max-width: 300px){
-                width: 100%;
-            }
-        
-        }
+       
     }
 }
 
@@ -271,4 +164,19 @@ div.card-body {
         padding-bottom: 0;
         height: 3vh;
     }
+}
+
+.button-options {
+    // width: 5%;
+    right: 3.5%;
+    position: fixed;
+    bottom: 3%;
+    :first-child {
+    display: block;
+    margin-bottom: 20%;
+    }
+    a.active {
+        background-color: $primary;
+    }  
+    
 }

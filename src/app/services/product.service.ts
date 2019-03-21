@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Product, Brand } from '../models/product';
 import { contentHeaders } from '../@config/header/header';
 import { IntegrationURIS } from '../@config/endpoint/endpoints';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -25,9 +26,9 @@ export class ProductService {
     return this._http.get(this._endpoint.integrationUris.base + this._endpoint.integrationUris.typeProducts, this._headers);
   }
 
-  getBrands(): Observable<Brand[]>{
+  getBrands(): any {
     return this._http
-    .get<Brand[]>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productBrands, this._headers)
+    .get<Brand>(this._endpoint.integrationUris.base + this._endpoint.integrationUris.productBrands, this._headers)
   }
 
   getStorages(){
@@ -40,29 +41,49 @@ export class ProductService {
 
   // CREAR NUEVO PRODUCTO
   createProduct(products:Product){
-    debugger
-    let data: any = {
-      "productCode": products.productCode,
-      "productName": products.productName,
-      "productCost": products.productCost,
-      "productBrandId": Number(products.productBrandId),
-      "providersId": Number(products.providersId),
-      "storageId": Number(products.storageId),
-      "typeProductId": Number(products.typeProductId)
-    }
-    console.log(JSON.stringify(data));
-    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, data, this._headers);
+    console.log(JSON.stringify(products));
+    return this._http.post(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, JSON.stringify(products), this._headers,)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   // EDITAR PRODUCTOS
-  updateProduct(idProduct:string){
-    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products, idProduct , this._headers);
+  updateProduct(idProduct:number, products:Product){
+    debugger
+    products.productId = idProduct;
+
+    console.log("UpdateProduct", JSON.stringify(products));
+    
+    return this._http.put(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products + "/" + idProduct,  JSON.stringify(products), this._headers)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
    // ELIMINAR PRODUCTOS
-  deleteProduct(idProduct:string){
-    return this._http.delete(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products + idProduct , this._headers);
+  deleteProduct(idProduct:number){
+    return this._http.delete(this._endpoint.integrationUris.base + this._endpoint.integrationUris.products + "/" + idProduct , this._headers)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
 
+  // CAPTURAR LOS ERRORES DE LOS SERVICIOS
+  handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+  }
 }
