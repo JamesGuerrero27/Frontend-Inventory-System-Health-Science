@@ -252,7 +252,7 @@
             <div class="m-4 d-flex  text-center">
                 <a mat-button disabled class="mr-4">Resetear Campos</a>
                 <button mat-flat-button class="my-bg-primary text-white ml-4" type="submit">Guardar Cambios</button>
-                <a mat-flat-button class="my-bg-primary text-white ml-4" (click)="openTypeWindow('','');">Volver</a>
+                <a mat-flat-button class="my-bg-primary text-white ml-4" (click)="openTypeWindow('','');">Cancelar</a>
             </div>
         </form>
 
@@ -374,8 +374,8 @@
 </div>
 
 <!-- MIGRACION -->
-<div>
-    <div class="container-fluid" *ngIf="hiddenTabled==false">
+<div *ngIf="!hiddenTabled">
+    <div class="container-fluid" >
             <div class="card m-4  container-header" >
                 
                 <div class="card-header d-flex justify-content-start"> 
