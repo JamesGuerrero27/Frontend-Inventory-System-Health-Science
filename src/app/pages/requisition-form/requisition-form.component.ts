@@ -26,6 +26,7 @@ export class RequisitionFormComponent implements OnInit {
   requisitionFormGroup: FormGroup;
   Contador: number;
   requisitionArr: [];
+  hiddenTabled: boolean;
 
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
@@ -61,7 +62,9 @@ export class RequisitionFormComponent implements OnInit {
     private _formBuilder: FormBuilder, 
     private _productService:ProductService, 
     private _requisitionService: RequisitionService
-  ) {}
+  ) {
+    this.hiddenTabled = false;
+  }
 
   ngOnInit() {
        this.initDataFormRequisition(''); 
@@ -85,14 +88,14 @@ export class RequisitionFormComponent implements OnInit {
     let idRequisition: number = this._requisition ? this._requisition.length + 1: 0;
 
     // Variables temp. || 
-    let requisitionId = typeRequest == "edit" ? this.dataRequisitionFiltered.requisitionId: idRequisition;
-    let requistionDate = typeRequest == "edit" ? this.parsedDateTime(this.dataRequisitionFiltered.requistionDate, 'date') : date;
-    let _class =  typeRequest == "edit" ? this.dataRequisitionFiltered.class: '';
-    let reqPracticeName =  typeRequest == "edit" ? this.dataRequisitionFiltered.reqPracticeName: '';
-    let section = typeRequest == "edit" ?  this.dataRequisitionFiltered.section: '';
-    let storageId =  typeRequest == "edit" ? this.dataRequisitionFiltered.storageId: '';
-    let classHour = typeRequest == "edit" ? this.parsedDateTime(this.dataRequisitionFiltered.classHour, 'time'): '';
-    let practiceDate = typeRequest == "edit" ? this.dataRequisitionFiltered.practiceDate: '';
+    let requisitionId = typeRequest == "edit" || typeRequest == "view" ? this.dataRequisitionFiltered.requisitionId: idRequisition;
+    let requistionDate = typeRequest == "edit"  || typeRequest == "view" ? this.parsedDateTime(this.dataRequisitionFiltered.requistionDate, 'date') : date;
+    let _class =  typeRequest == "edit"  || typeRequest == "view" ? this.dataRequisitionFiltered.class: '';
+    let reqPracticeName =  typeRequest == "edit"  || typeRequest == "view" ? this.dataRequisitionFiltered.reqPracticeName: '';
+    let section = typeRequest == "edit"  || typeRequest == "view" ?  this.dataRequisitionFiltered.section: '';
+    let storageId =  typeRequest == "edit"  || typeRequest == "view"  ? this.dataRequisitionFiltered.storageId: '';
+    let classHour = typeRequest == "edit"  || typeRequest == "view"  ? this.parsedDateTime(this.dataRequisitionFiltered.classHour, 'time'): '';
+    let practiceDate = typeRequest == "edit"  || typeRequest == "view" ? this.dataRequisitionFiltered.practiceDate: '';
     
     console.log(typeRequest == "edit" ? this.dataRequisitionFiltered.requisitionDetails:'')
     
@@ -111,7 +114,6 @@ export class RequisitionFormComponent implements OnInit {
   }
 
   parsedDateTime(dateToParsed:any, typeParsed:string) : string {
-    debugger
     let data =  new Date(dateToParsed);
     let  dateParsed;
     if (typeParsed == 'date'){
@@ -126,15 +128,14 @@ export class RequisitionFormComponent implements OnInit {
       hours < 10 ?  strH = '0' + hours: strH = hours.toString();
       minutes < 10 ? strM = '0' + minutes: strM = minutes.toString();
       dateParsed = strH + ":" + strM;
-      console.log(dateParsed)
+      //console.log(dateParsed)
     }
     return dateParsed;
   }
 
   addproductFormGroup(typeRequest:string): FormGroup { 
-    debugger
     let data: any;
-    if(typeRequest =='edit'){
+    if(typeRequest =='edit' || typeRequest == "view"  ){
       this.dataRequisitionFiltered.requisitionDetails.forEach(element => {
         let quantity =  element.quantity;
         let productId =  element.productId;
@@ -158,7 +159,6 @@ export class RequisitionFormComponent implements OnInit {
 
   // AGREGAR NUEVA LINEA PARA LA LISTA DE PRODUCTOS
   addNewLineProduct(): void {  
-    debugger
     (<FormArray>this.requisitionFormGroup.get('requisitionDetails')).push(this.addproductFormGroup(''));  
   }  
 
@@ -186,7 +186,6 @@ export class RequisitionFormComponent implements OnInit {
 
  // CREAR LA REQUISICION
   onCreateRequisition() : void{
-    debugger
     this._newRequisition = this.requisitionFormGroup.value;
     console.log("Imprimiendo DATA del FORM", this._newRequisition);
     this._requisitionService.createRequisition(this._newRequisition)
@@ -199,7 +198,6 @@ export class RequisitionFormComponent implements OnInit {
   }
 
   saveData(): void {
-    debugger
     var data:any = this.requisitionFormGroup.value;
     console.log(data)
   }
@@ -240,8 +238,8 @@ export class RequisitionFormComponent implements OnInit {
   }
 
   openTypeWindow (type: string, code:string): void {
-    debugger
     this.openWindowOf = type;
+    this.openWindowOf == "edit" || "create" || "view" ? this.hiddenTabled = true : this.hiddenTabled = false;
     let btnAdd = document.getElementById('add');
     let btnfilter = document.getElementById('filter');
     let inputCode = document.getElementById('class');
@@ -254,7 +252,7 @@ export class RequisitionFormComponent implements OnInit {
     }else if (type=='filter'){
       btnAdd.classList.remove('active');
       btnfilter.classList.add('active');  
-    }else if (type=='edit'){
+    }else if (type=='edit' || type == "view" ){
       this.addDataInputForm(code);
       inputCode ? inputCode.focus() : null;
     }else{
@@ -285,7 +283,6 @@ export class RequisitionFormComponent implements OnInit {
   };
   statusRequisitionMessage: string;
   verificationRequisitionTime(requisitionTime: any, practiceDate: any) {
-    debugger
     this.containerTimeVerification = {
       requisitionTime: requisitionTime!= '' ? requisitionTime.target.value :  this.containerTimeVerification.requisitionTime,
       practiceDate: practiceDate !='' ? practiceDate.target.value : this.containerTimeVerification.practiceDate
@@ -328,6 +325,17 @@ export class RequisitionFormComponent implements OnInit {
     }
 
   }
+
+  saveDataSelect(data) {
+      debugger
+      console.log("data",data)
+      console.log("this.dataRequisitionFiltered.requisitionDetails",this.dataRequisitionFiltered.requisitionDetails)
+  }
+
+  onEditRequisition(){
+    let data = this.requisitionFormGroup.value;
+    console.log("onEditRequisition", data)
+ }
 }
 
 
