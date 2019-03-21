@@ -69,8 +69,8 @@
                             </div>
                             <div class="container-input">
                                 <mat-form-field class="form-field-full-width mr-4">
-                                    <mat-select placeholder="Ciudad" formControlName="cityId" name="city">
-                                        <mat-option *ngFor="let city of _cities" [value]="_cities.cityId">
+                                    <mat-select placeholder="Ciudad" formControlName="cityId" name="cityId">
+                                        <mat-option *ngFor="let city of _cities" [value]="city.cityId">
                                             {{city.cityName}}
                                         </mat-option>
                                     </mat-select>
@@ -78,7 +78,7 @@
                                 </mat-form-field>
 
                                 <mat-form-field class="form-field-full-width mr-4">
-                                    <input matInput placeholder="Position del contacto" type="text" name="contactPosition" formControlName="contactPosition" required>
+                                    <input matInput placeholder="Posicion del contacto" type="text" name="contactPosition" formControlName="contactPosition" required>
                                     <mat-icon matSuffix>group</mat-icon>
                                 </mat-form-field>
 
@@ -155,7 +155,7 @@
                             <div class="container-input">
                                 <mat-form-field class="form-field-full-width mr-4">
                                     <mat-select placeholder="Ciudad" formControlName="cityId" name="city">
-                                        <mat-option *ngFor="let city of _cities" [value]="_cities.cityId">
+                                        <mat-option *ngFor="let city of _cities" [value]="city.cityId">
                                             {{city.cityName}}
                                         </mat-option>
                                     </mat-select>

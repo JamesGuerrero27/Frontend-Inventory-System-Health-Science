@@ -111,7 +111,7 @@ export class ProviderComponent implements OnInit {
     this._providerService.getCities()
       .subscribe((data: Cities[]) => {
         console.log('Cities SERVICE', data);
-        this.dataSource = new MatTableDataSource<Cities>(data);
+        // this.dataSource = new MatTableDataSource<Cities>(data);
         return this._cities = data;
       });
   }
