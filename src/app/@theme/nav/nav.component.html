@@ -41,29 +41,37 @@
             <mat-icon>dashboard</mat-icon>DashBoard
           </a>
           <a mat-list-item (click)="redirectToPage('requisition')">
-            <mat-icon>assignment</mat-icon>Requisicion
+            <mat-icon>assignment</mat-icon>Requisición
           </a>
           <a mat-list-item (click)="redirectToPage('product')">
-            <mat-icon>shopping_basket</mat-icon>Productos
+            <mat-icon>account_balance_wallet</mat-icon>Productos
           </a>
           <a mat-list-item (click)="redirectToPage('provider')">
             <mat-icon>person</mat-icon>Proveedores
           </a>
-          <a mat-list-item routerLink="/" >
-            <mat-icon>exit_to_app</mat-icon>Logout
-          </a>
+          <!-- <a mat-list-item (click)="redirectToPage('shopping')">
+            <mat-icon>shopping_basket</mat-icon>Compras
+          </a> -->
         </div>
         <div class="title-list-item">
           <a class="text-muted">MANTENIMIENTOS</a>
         </div>
         <div class="container-item">
           <a mat-list-item (click)="redirectToPage('warehouseMaintenance')">
-            <mat-icon>directions_bus</mat-icon>Mantenimiento de bodega
+            <mat-icon>directions_bus</mat-icon>Bodega
           </a>
           <a mat-list-item (click)="redirectToPage('brandMaintenance')">
-            <mat-icon>local_offer</mat-icon>Mantenimiento de marca
+            <mat-icon>local_offer</mat-icon>Marca de Productos
           </a>
 
+        </div>
+        <div class="title-list-item">
+          <a class="text-muted">OPCIONES</a>
+        </div>
+        <div class="container-item">
+          <a mat-list-item routerLink="/" >
+            <mat-icon>exit_to_app</mat-icon>Logout
+          </a>
         </div>
       </mat-nav-list>
 
@@ -117,6 +125,10 @@
     <!-- Inicio de Proveedores -->
     <app-provider *ngIf="showPage && page=='provider'"></app-provider>
      <!-- Fin de la vista de Proveedores -->
+
+    <!-- Inicio de Proveedores -->
+    <!-- <app-shopping *ngIf="showPage && page=='shopping'"></app-shopping> -->
+    <!-- Fin de la vista de Proveedores -->
 
      <!-- Inicio de la vista mantenimiento de bodega -->
     <app-warehouse-maintenance *ngIf="showPage && page=='warehouseMaintenance'"></app-warehouse-maintenance>
