@@ -25,6 +25,7 @@ import { DialogsComponent } from './@theme/dialogs/dialogs.component';
 import { WarehouseMaintenanceComponent } from './pages/warehouse-maintenance/warehouse-maintenance.component';
 import { BrandMaintenanceComponent } from './pages/brand-maintenance/brand-maintenance.component';
 import { ShoppingComponent } from './pages/shopping/shopping.component';
+import { TypeproductsComponent } from './pages/typeproducts/typeproducts.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ShoppingComponent } from './pages/shopping/shopping.component';
     DialogsComponent,
     WarehouseMaintenanceComponent,
     BrandMaintenanceComponent,
-    ShoppingComponent
+    ShoppingComponent,
+    TypeproductsComponent
 
   ],
   imports: [

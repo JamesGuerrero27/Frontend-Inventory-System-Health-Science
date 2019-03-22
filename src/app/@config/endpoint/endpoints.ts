@@ -5,7 +5,7 @@ public baseUrl: string;
 public integrationUris: any;
 
 constructor() {
-this.baseUrl = 'https://sistema20190205065709.azurewebsites.net/api';
+this.baseUrl = 'http://inventory-system-ceutec.azurewebsites.net/api';
 this.integrationUris = {
 'base': this.baseUrl,
 'products': '/Products',
