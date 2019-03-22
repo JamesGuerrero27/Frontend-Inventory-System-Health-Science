@@ -63,6 +63,9 @@
           <a mat-list-item (click)="redirectToPage('brandMaintenance')">
             <mat-icon>local_offer</mat-icon>Marca de Productos
           </a>
+          <a mat-list-item (click)="redirectToPage('typeProductsMaintenance')">
+            <mat-icon>add_shopping_cart</mat-icon>Tipo de Productos
+          </a>
 
         </div>
         <div class="title-list-item">
@@ -137,5 +140,11 @@
 <!-- Inicio de la vista mantenimiento de bodega -->
     <app-brand-maintenance *ngIf="showPage && page=='brandMaintenance'"></app-brand-maintenance>
     <!-- Fin de la vista mantenimiento de bodega -->
+
+    <!-- Inicio de la vista mantenimiento de bodega -->
+    <app-typeproducts *ngIf="showPage && page=='typeProductsMaintenance'"></app-typeproducts>
+    <!-- Fin de la vista mantenimiento de bodega -->
+
+    
   </mat-sidenav-content>
 </mat-sidenav-container>
