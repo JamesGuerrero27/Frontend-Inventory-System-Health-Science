@@ -11,7 +11,7 @@ $primary: #00CBFE;
 div {
     mat-step-header {
         div.mat-step-icon-state-number{
-            background-color: #48C0FD !important;
+            background-color: $primary !important;
         }
     } 
 }
@@ -88,9 +88,11 @@ div {
             display: flex;
             justify-content: center;
             width: 87%;
-            mat-icon.mat-icon {
-                color: #00CBFE;
-                font-size: 2rem;
+            mat-icon{
+                .mat-icon {
+                    color: #00CBFE;
+                    font-size: 2rem;
+                }
             }
         }
     }
@@ -284,4 +286,9 @@ fieldset {
         font-weight: 500;
         width: 30%;
     }
+}
+
+span.messagerErrorText {
+    font-size: .9rem;
+    color: red;
 }

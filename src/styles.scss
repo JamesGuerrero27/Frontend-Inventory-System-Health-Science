@@ -202,6 +202,10 @@ $primary: #00CBFE;
 $secundary: #F55AA7;
 $enfasis: #FBA905;
 
+// COLORES DE ESTADO
+$success: #60C060;
+$warning: #FFD740;
+$danger: #FF3C32;
 
 .my-bg-primary {
 	background-color: $primary;
@@ -227,6 +231,18 @@ $enfasis: #FBA905;
 	color: $enfasis;
 }
 
+// CLASES ESTADOS
+.status-requisition-date-success {
+	color: $success !important;
+};
+
+.status-requisition-date-danger {
+	color: $danger !important;
+};
+
+.status-requisition-date-warning {
+	color: $warning !important;
+};
 
 
 

@@ -287,48 +287,75 @@ export class RequisitionFormComponent implements OnInit {
   };
   statusRequisitionMessage: string;
   verificationRequisitionTime(requisitionTime: any, practiceDate: any) {
-    this.containerTimeVerification = {
-      requisitionTime: requisitionTime!= '' ? requisitionTime.target.value :  this.containerTimeVerification.requisitionTime,
-      practiceDate: practiceDate !='' ? practiceDate.target.value : this.containerTimeVerification.practiceDate
-    }
-
-    if (this.containerTimeVerification.requisitionTime.length > 0 && this.containerTimeVerification.practiceDate!='') {
-      let dNow = new Date();
-      console.log(dNow)
-      let dateNow = this.parsedDateTime(dNow, 'date'); 
-      let TimeNow = this.parsedDateTime(dNow, 'time'); 
-      let dateTimeNow = dateNow + " " + TimeNow + ':00';
-
-      let practiceDate = this.parsedDateTime(this.containerTimeVerification.practiceDate, 'date');
-      let requisitionTime = this.containerTimeVerification.requisitionTime + ':00';
-      
-      let practiceDateTime  = practiceDate + " " + requisitionTime;
-      
-      console.log("dateTimeNow", dateTimeNow);
-      console.log("practiceDateTime",practiceDateTime);
-      var dNowRequisition = moment(dateTimeNow, "YYYY-MM-DD HH:mm:ss");
-      var dPracticeRequisition = moment(practiceDateTime, "YYYY-MM-DD HH:mm:ss");
-
-      var diffDaysPractice = dPracticeRequisition.diff(dNowRequisition, 'd'); // Diff in days
-      console.log("Dias",diffDaysPractice);
-
-      var diffHoursPractice = dPracticeRequisition.diff(dNowRequisition, 'h'); // Diff in hours
-      console.log("Horas",diffHoursPractice);
-      
-      if (diffHoursPractice > 72) {
-       console.log("Alert Green");
-       this.statusRequisitionMessage = "";
-      } else if (diffHoursPractice > 48) {
-        this.statusRequisitionMessage = "El tiempo de solicitud esta por debajo de las 72 hrs. ";
-       console.log("Alert Yellow") 
-      } else if (diffHoursPractice < 48) {
-       console.log("Alert Red")
-       this.statusRequisitionMessage = "Imposible registrar esta solicitud, se requieren 72 horas de anticipación";
+    try{
+      this.containerTimeVerification = {
+        requisitionTime: requisitionTime!= '' ? requisitionTime.target.value :  this.containerTimeVerification.requisitionTime,
+        practiceDate: practiceDate !='' ? practiceDate.target.value : this.containerTimeVerification.practiceDate
       }
-      console.log("dateNow",dateNow, "practiceDate", practiceDate, "requisitionTime", requisitionTime);
-    }
 
+      if (this.containerTimeVerification.requisitionTime.length > 0 && this.containerTimeVerification.practiceDate!='') {
+        let dNow = new Date();
+        console.log(dNow)
+        let dateNow = this.parsedDateTime(dNow, 'date'); 
+        let TimeNow = this.parsedDateTime(dNow, 'time'); 
+        let dateTimeNow = dateNow + " " + TimeNow + ':00';
+
+        let practiceDate = this.parsedDateTime(this.containerTimeVerification.practiceDate, 'date');
+        let requisitionTime = this.containerTimeVerification.requisitionTime + ':00';
+        
+        let practiceDateTime  = practiceDate + " " + requisitionTime;
+        
+        console.log("dateTimeNow", dateTimeNow);
+        console.log("practiceDateTime",practiceDateTime);
+        var dNowRequisition = moment(dateTimeNow, "YYYY-MM-DD HH:mm:ss");
+        var dPracticeRequisition = moment(practiceDateTime, "YYYY-MM-DD HH:mm:ss");
+
+        var diffDaysPractice = dPracticeRequisition.diff(dNowRequisition, 'd'); // Diff in days
+        console.log("Dias",diffDaysPractice);
+
+        var diffHoursPractice = dPracticeRequisition.diff(dNowRequisition, 'h'); // Diff in hours
+        console.log("Horas",diffHoursPractice);
+debugger
+        if (diffHoursPractice > 72) {
+
+          console.log("Alert Green");
+          this.statusRequisitionMessage = "";
+          this.deleteClass();
+          document.getElementById('statusRequisitionDate').classList.add("status-requisition-date-success");
+
+        } else if (diffHoursPractice > 48) {    
+          this.deleteClass();
+          this.statusRequisitionMessage = "El tiempo de solicitud esta por debajo de las 72 hrs. ";
+          document.getElementById('statusRequisitionDate').classList.add("status-requisition-date-warning");
+          console.log("Alert Yellow");
+
+        } else if (diffHoursPractice < 48) {
+          this.deleteClass();
+          console.log("Alert Red");
+          this.statusRequisitionMessage = "Imposible registrar esta solicitud, se requieren 72 horas de anticipación";
+          document.getElementById('statusRequisitionDate').classList.add("status-requisition-date-danger");
+        }
+        debugger
+        console.log("dateNow",dateNow, "practiceDate", practiceDate, "requisitionTime", requisitionTime);
+      }
+    } catch (e) {
+      console.log("Ocurrio un error inesperado, Contacte con el administrador")
+    }
   }
+
+  deleteClass() {
+    let tagName: string = "statusRequisitionDate";
+    let theClass:string = "status-requisition-date-";
+    var tag = document.getElementById(tagName);
+    let arrayClass = ["success", "warning", "danger"]
+    if(tag) {
+      for(let i=0; i < arrayClass.length; i++){
+        if (tag.classList.contains(theClass + arrayClass[i])) {
+          tag.classList.remove(theClass + arrayClass[i]);
+        }
+      }
+    }
+  } 
 
   saveDataSelect(data) {
       debugger
