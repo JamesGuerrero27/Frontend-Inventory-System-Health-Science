@@ -6,7 +6,7 @@
     <div class="card m-4  container-header">
 
         <div class="card-header d-flex justify-content-start">
-            <mat-icon matSuffix class="size-3 mr-2">account_balance_wallet</mat-icon>
+            <mat-icon matSuffix class="size-3 mr-2">person</mat-icon>
             <h5>Proveedores</h5>
         </div>
         <div class="card-body">
@@ -254,9 +254,21 @@
                             <a (click)="openTypeWindow('edit', element.providersId);" mat-icon-button class="my-color-primary" id="{{element.providersId}}">
                                 <mat-icon class="">edit</mat-icon>
                             </a>
-                            <a (click)="onDeleteProvider(element.providersId);" mat-icon-button class="my-color-primary" id="{{element.providersId}}">
-                                <mat-icon>delete</mat-icon>
+                            <a mat-icon-button class="my-color-primary">
+                                <mat-icon (click)="open(content)">delete</mat-icon>
                             </a>
+                            <ng-template #content let-modal>
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modal-basic-title">Esta seguro que desea eliminar el proveedor?</h4>
+                                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button (click)="onDeleteProvider(element.providersId);" class="btn btn-outline-dark" id="{{element.providersId}}">Si</button>
+                                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">No</button>
+                                </div>
+                            </ng-template>
                         </td>
                     </ng-container>
 

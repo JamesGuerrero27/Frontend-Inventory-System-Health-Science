@@ -51,7 +51,6 @@ export class ProductService {
 
   // EDITAR PRODUCTOS
   updateProduct(idProduct:number, products:Product){
-    debugger
     products.productId = idProduct;
 
     console.log("UpdateProduct", JSON.stringify(products));

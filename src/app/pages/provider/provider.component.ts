@@ -5,6 +5,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NotificationsComponent } from 'src/app/@theme/notifications/notifications.component';
 import { MatTableDataSource } from '@angular/material';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-provider',
@@ -15,6 +16,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 
 export class ProviderComponent implements OnInit {
+  closeResult: string;
   public openWindowOf: string;
   public isActive: string;
 
@@ -42,7 +44,7 @@ export class ProviderComponent implements OnInit {
 
   providerForm: FormGroup;
 
-  constructor(private _notification: NotificationsComponent, private _providerService: ProviderService) {
+  constructor(private _notification: NotificationsComponent, private _providerService: ProviderService, private modalService: NgbModal) {
     this.initFilteredProvider();
     this.initForm('');
 
@@ -151,6 +153,7 @@ export class ProviderComponent implements OnInit {
       .subscribe((data: Provider) => {
         console.log('Success Delete Provider');
         this.openTypeWindow('', '');
+        this.modalService.dismissAll();
         this._notification.notificationOpen('success', 'success!', 'Proveedor ha sido eliminado con exito!!!');
         this.getProvider();
       }, error => console.log('Upps => ' + error));
@@ -216,5 +219,23 @@ export class ProviderComponent implements OnInit {
     this.dataProviderFiltered = this._provider.filter(p => p.providersId == code)[0];
     console.log(this.dataProviderFiltered);
     this.initForm('edit');
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', centered: true}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 }
